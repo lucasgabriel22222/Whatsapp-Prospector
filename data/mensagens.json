@@ -1,0 +1,65 @@
+{
+  "config": {
+    "delayEntreVariacoes": 3,
+    "variavelNome": "{empresa}",
+    "simularDigitacao": true,
+    "personalizarNome": true
+  },
+  "grupos": [
+    {
+      "id": "saudacoes",
+      "nome": "Saudações",
+      "descricao": "Primeira frase da mensagem inicial",
+      "ativo": true,
+      "variacoes": [
+        "Bom dia! Eu falo com o responsável da [Nome da Empresa]?"
+      ]
+    },
+    {
+      "id": "abertura",
+      "nome": "Abertura / Contexto",
+      "descricao": "Como você encontrou a empresa",
+      "ativo": true,
+      "variacoes": [
+        "Notei aqui no perfil de vocês no Google que o [Nome da Empresa] ainda não tem uma página oficial para atender os clientes que pesquisam por [ex: pet shop / academia / barbearia] na região."
+      ],
+      "collapsed": false
+    },
+    {
+      "id": "qualificacao",
+      "nome": "Pergunta Qualificadora",
+      "descricao": "Pergunta para qualificar o lead",
+      "ativo": true,
+      "variacoes": [
+        "Eu desenvolvo páginas focadas em converter essas buscas direto no WhatsApp. Se você topar, monto uma amostra com as informações e a identidade visual de vocês sem custo nenhum para você dar uma olhada. O que acha?",
+        "Montei esse modelo inicial com o foco em deixar tudo fácil para o cliente chamar vocês direto no WhatsApp com 1 clique. Dá uma olhada no celular e me fala o que achou da estrutura!",
+        "Legal que gostou! Para entregar essa estrutura pronta no ar (já com o domínio .com.br, hospedagem, cadeado de segurança SSL e integração total no WhatsApp), o investimento em agência seria de uns R$ 1.200.",
+        "Como a base do projeto de vocês já tá adiantada, consigo fazer por R$ 500 à vista no PIX ou 2x de R$ 265 no cartão.",
+        "Eu cuido de toda a parte técnica e entrego no ar funcionando. Faz sentido para o momento de vocês?"
+      ],
+      "collapsed": false
+    },
+    {
+      "id": "followup",
+      "nome": "Follow-up (sem resposta)",
+      "descricao": "Mensagem enviada se não houver resposta",
+      "ativo": false,
+      "variacoes": [
+        "Oi, só passando aqui de novo 👋 Fiquei curioso se você viu minha mensagem sobre o protótipo grátis do seu site. Quer que eu já comece a montar uma ideia pra te mostrar?",
+        "Opa, imagino que a rotina esteja corrida por aí!\n\nComo não tive retorno, vou entender que ter um site gerando clientes no Google não é sua prioridade no momento e vou liberar essa vaga de protótipo gratuito pra outra empresa do setor.\n\nSe mudar de ideia no futuro e quiser ver como ficaria a sua marca, só me avisar por aqui. Abraço!",
+        "opa, só pra garantir que a mensagem não se perdeu aí!\n\nJá comecei a desenhar a estrutura visual do protótipo.\n\nPosso te mandar a deia inicial por aqui só pra você dar uma olhada, sem compromisso?"
+      ],
+      "collapsed": true
+    },
+    {
+      "id": "apresentacao",
+      "nome": "Apresentação do Serviço",
+      "descricao": "Enviada após interesse positivo do lead",
+      "ativo": false,
+      "variacoes": [
+        "Perfeito! Trabalho criando *sites profissionais*, *sistemas de agendamento online* e *integrações automáticas* para negócios locais.\n\nA ideia é simples: seu cliente agenda direto pelo site, sem precisar ligar, e você recebe tudo organizado automaticamente.\n\nTeria interesse em ver como funcionaria para a *{empresa}*?"
+      ],
+      "collapsed": true
+    }
+  ]
+}

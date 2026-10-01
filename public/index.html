@@ -1,0 +1,1998 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WhatsApp Prospector</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+
+<!-- ===== SIDEBAR ===== -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <i data-lucide="message-circle" class="logo-icon"></i>
+    <span class="logo-text">Prospector</span>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a href="#" class="nav-item active" data-section="controle">
+      <i data-lucide="layout-dashboard" class="nav-icon"></i> Controle
+    </a>
+    <a href="#" class="nav-item" data-section="disparo">
+      <i data-lucide="send" class="nav-icon"></i> Disparo
+    </a>
+    <a href="#" class="nav-item" data-section="mensagens">
+      <i data-lucide="pencil" class="nav-icon"></i> Mensagens
+    </a>
+    <a href="#" class="nav-item" data-section="gemini">
+      <i data-lucide="bot" class="nav-icon"></i> Gemini IA
+    </a>
+    <a href="#" class="nav-item" data-section="negocios">
+      <i data-lucide="flame" class="nav-icon"></i> Negócios
+      <span class="nav-badge" id="navBadgeNegocios"></span>
+    </a>
+    <a href="#" class="nav-item" data-section="pagamento">
+      <i data-lucide="banknote" class="nav-icon"></i> Gerar PIX
+    </a>
+    <a href="#" class="nav-item" data-section="agendamento">
+      <i data-lucide="calendar" class="nav-icon"></i> Agendamentos
+    </a>
+    <a href="#" class="nav-item" data-section="clientes">
+      <i data-lucide="users" class="nav-icon"></i> Clientes
+      <span class="nav-badge" id="navBadgeClientes"></span>
+    </a>
+    <a href="#" class="nav-item" data-section="scraper">
+      <i data-lucide="map-pin" class="nav-icon"></i> Scraper Maps
+      <span class="nav-badge" id="navBadgeScraper"></span>
+    </a>
+    <a href="#" class="nav-item" data-section="apify">
+      <i data-lucide="cloud-lightning" class="nav-icon"></i> Apify Scraper
+      <span class="nav-badge" id="navBadgeApify"></span>
+    </a>
+    <a href="#" class="nav-item" data-section="meus-leads">
+      <i data-lucide="folder-check" class="nav-icon"></i> Meus Leads
+      <span class="nav-badge" id="navBadgeMeusLeads"></span>
+    </a>
+
+    <a href="#" class="nav-item" data-section="conversas">
+      <i data-lucide="message-square" class="nav-icon"></i> Conversas
+    </a>
+    <a href="#" class="nav-item" data-section="relatorios">
+      <i data-lucide="bar-chart-2" class="nav-icon"></i> Relatórios
+    </a>
+    <a href="#" class="nav-item" data-section="configuracoes">
+      <i data-lucide="settings" class="nav-icon"></i> Configurações
+    </a>
+  </nav>
+
+  <div class="sidebar-status">
+    <div class="status-dot-wrap">
+      <span class="status-dot" id="waStatusDot"></span>
+      <span class="status-label" id="waStatusLabel">Verificando...</span>
+    </div>
+    <span class="status-instance" id="waInstance"></span>
+  </div>
+</aside>
+
+<!-- ===== MAIN ===== -->
+<main class="main">
+
+  <!-- ==============================
+       SEÇÃO: CONTROLE
+  ============================== -->
+  <!-- ==============================
+       SEÇÃO: CONTROLE / DASHBOARD FINANCEIRO & PROSPECT
+  ============================== -->
+  <section class="section active" id="section-controle">
+    <div class="page-header" style="align-items:center;">
+      <div>
+        <h1 class="page-title">Painel de Controle & Dashboard</h1>
+        <p class="page-sub">Acompanhe seu faturamento, conversão de cobranças e controle operacional em tempo real</p>
+      </div>
+
+      <!-- Filtro de Período com Seletor e Modal Calendário Preto -->
+      <div class="dash-period-toolbar">
+        <div class="dash-period-buttons">
+          <button class="btn-dash-period active" data-period="hoje">Hoje</button>
+          <button class="btn-dash-period" data-period="ontem">Ontem</button>
+          <button class="btn-dash-period" data-period="7d">7 dias</button>
+          <button class="btn-dash-period" data-period="30d">30 dias</button>
+          <button class="btn-dash-period btn-period-custom" id="btnPeriodoPersonalizado">
+            <i data-lucide="calendar" style="width:14px;height:14px"></i>
+            <span id="labelPeriodoCustom">Personalizar</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- BENTO GRID STATS (Inspirado no StatsBento) -->
+    <div class="stats-bento-grid">
+      <!-- Card Principal (Market Share / Faturamento Geral) -->
+      <div class="bento-card bento-primary">
+        <div class="bento-bg-pattern"></div>
+        <div class="bento-top">
+          <span class="bento-tag">Faturamento Confirmado</span>
+          <h3 class="bento-big-stat" id="dashTotalFaturado">R$ 0,00</h3>
+        </div>
+        <div class="bento-bottom">
+          <p class="bento-subtext">Valor total recebido via Mercado Pago no período selecionado.</p>
+          <div class="bento-badge-growth">
+            <i data-lucide="trending-up" style="width:14px;height:14px"></i>
+            <span id="dashGrowthBadge">+0.0% vs período anterior</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card Secundário: Vendas Concluídas -->
+      <div class="bento-card bento-muted bento-col-2">
+        <div class="bento-flex-between">
+          <div>
+            <p class="bento-label">Vendas Concluídas</p>
+            <p class="bento-stat-val" id="dashQtdVendas">0</p>
+          </div>
+          <div class="bento-badge-growth" style="background:rgba(16,185,129,0.15);color:#10B981;border:1px solid rgba(16,185,129,0.3)">
+            <i data-lucide="trending-up" style="width:14px;height:14px"></i>
+            <span id="dashVendasGrowthBadge">+100% vendas ativas</span>
+          </div>
+        </div>
+        <div class="bento-footer-meta">
+          <span id="dashTotalCobrancasMeta">0 cobranças geradas no período</span>
+        </div>
+      </div>
+
+      <!-- Card Terciário: Conversão -->
+      <div class="bento-card bento-card-sm text-center">
+        <p class="bento-stat-val" id="dashTaxaConversao">0%</p>
+        <p class="bento-label">Taxa de Conversão</p>
+      </div>
+
+      <!-- Card Terciário: Pendente -->
+      <div class="bento-card bento-muted bento-card-sm flex-row">
+        <div class="bento-icon-circle"><i data-lucide="dollar-sign" style="width:20px;height:20px;color:var(--primary)"></i></div>
+        <div>
+          <p class="bento-stat-sm" id="dashTotalPendente">R$ 0,00</p>
+          <p class="bento-label">EM ABERTO / PENDENTE</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- GRÁFICO RECHARTS COMPOSITE CHART (CARD CASHFLOW STYLED) -->
+    <div class="card dash-chart-card">
+      <div class="card-header border-0 pb-0">
+        <div>
+          <h2 class="card-title" style="font-size:17px;font-weight:700">Evolução Financeira (Cashflow)</h2>
+          <p style="font-size:12px;color:var(--text3);margin-top:2px" id="dashChartDateRange">Carregando período...</p>
+        </div>
+        <div class="card-toolbar" style="display:flex;align-items:center;gap:10px">
+          <span class="apify-badge oportunidade" style="background:rgba(16,185,129,0.15);color:#10b981;border:1px solid rgba(16,185,129,0.3)">
+            ● Receita em Tempo Real
+          </span>
+        </div>
+      </div>
+
+      <div class="card-body px-0" style="padding-top:10px;">
+        <div class="dash-chart-container">
+          <svg id="svgDashChart" viewBox="0 0 800 300" preserveAspectRatio="none" class="dash-recharts-svg">
+            <defs>
+              <linearGradient id="cashflowGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#10B981" stop-opacity="0.35"/>
+                <stop offset="100%" stop-color="#10B981" stop-opacity="0"/>
+              </linearGradient>
+              <filter id="dotShadow" x="-50%" y="-50%" width="200%" height="200%">
+                <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.5"/>
+              </filter>
+            </defs>
+
+            <!-- Linhas de grade horizontais estilo CartesianGrid (4 12) -->
+            <g class="recharts-cartesian-grid">
+              <line x1="50" y1="40" x2="770" y2="40" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4 12"/>
+              <line x1="50" y1="100" x2="770" y2="100" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4 12"/>
+              <line x1="50" y1="160" x2="770" y2="160" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4 12"/>
+              <line x1="50" y1="220" x2="770" y2="220" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4 12"/>
+              <line x1="50" y1="260" x2="770" y2="260" stroke="rgba(255,255,255,0.1)"/>
+            </g>
+
+            <!-- Área de gradiente -->
+            <path id="svgAreaPath" d="" fill="url(#cashflowGradient)" />
+
+            <!-- Linha principal do gráfico -->
+            <path id="svgLinePath" d="" fill="none" stroke="#10B981" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+
+            <!-- Eixo X Labels -->
+            <g id="svgXAxis" font-size="11" fill="#9CA3AF" text-anchor="middle"></g>
+
+            <!-- Eixo Y Labels -->
+            <g id="svgYAxis" font-size="11" fill="#9CA3AF" text-anchor="end"></g>
+
+            <!-- Pontos e Ativos -->
+            <g id="svgDots"></g>
+
+            <!-- Linha de Cursor Tooltip -->
+            <line id="svgCursorLine" x1="0" y1="30" x2="0" y2="260" stroke="#10B981" stroke-dasharray="3 3" opacity="0" />
+          </svg>
+
+          <!-- Floating Tooltip Shadcn style -->
+          <div class="dash-custom-tooltip hidden" id="dashChartTooltip">
+            <div class="tooltip-label" id="tooltipLabel">Período</div>
+            <div class="tooltip-val" id="tooltipVal">R$ 0,00</div>
+            <div class="tooltip-sub" id="tooltipSub">0 vendas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROCESSOS DO SISTEMA & CONTROLE -->
+    <div class="processo-grid" style="margin-top:24px">
+      <!-- Gemini IA status -->
+      <div class="processo-card" id="cardGemini">
+        <div class="processo-header">
+          <div class="processo-icon"><i data-lucide="sparkles"></i></div>
+          <div class="processo-info">
+            <span class="processo-nome">Gemini IA + Listener</span>
+            <span class="processo-desc">Liga o Gemini e o webhook de respostas automaticamente</span>
+          </div>
+          <label class="big-toggle" title="Ligar/desligar Gemini">
+            <input type="checkbox" id="toggleGeminiControle" />
+            <span class="big-toggle-track"></span>
+            <span class="big-toggle-thumb"></span>
+          </label>
+        </div>
+        <div class="processo-body">
+          <div class="processo-meta" id="geminiStatusMeta">Carregando...</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn btn-secondary btn-sm" onclick="navegarPara('gemini')">Editar prompt</button>
+            <button class="btn btn-secondary btn-sm" id="btnConfigurarWebhook">Config Webhook</button>
+            <button class="btn btn-secondary btn-sm" id="btnTesteManual">Teste Manual</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bot de Disparo -->
+      <div class="processo-card" id="cardDisparo">
+        <div class="processo-header">
+          <div class="processo-icon"><i data-lucide="send"></i></div>
+          <div class="processo-info">
+            <span class="processo-nome">Bot de Disparo</span>
+            <span class="processo-desc">Envia mensagens de prospecção em massa</span>
+          </div>
+          <div class="processo-status-dot" id="disparoDot"></div>
+        </div>
+        <div class="processo-body">
+          <div class="processo-meta" id="disparoMeta">Parado</div>
+          <button class="btn btn-secondary btn-sm" onclick="navegarPara('disparo')">Ir para Disparo</button>
+        </div>
+      </div>
+
+      <!-- WhatsApp Conexão -->
+      <div class="processo-card" id="cardWhatsapp">
+        <div class="processo-header">
+          <div class="processo-icon"><i data-lucide="smartphone"></i></div>
+          <div class="processo-info">
+            <span class="processo-nome">WhatsApp</span>
+            <span class="processo-desc">Evolution API — conexão em tempo real</span>
+          </div>
+          <div class="processo-status-dot" id="waDot2"></div>
+        </div>
+        <div class="processo-body">
+          <div class="processo-meta" id="waMeta">Verificando...</div>
+          <button class="btn btn-secondary btn-sm" id="btnTestarWA">&#8635; Verificar</button>
+        </div>
+      </div>
+
+      <!-- Webhook Status -->
+      <div class="processo-card" id="cardWebhook">
+        <div class="processo-header">
+          <div class="processo-icon"><i data-lucide="radio"></i></div>
+          <div class="processo-info">
+            <span class="processo-nome">Webhook</span>
+            <span class="processo-desc">Recebe mensagens do WhatsApp em tempo real</span>
+          </div>
+          <div class="processo-status-dot" id="webhookDot"></div>
+        </div>
+        <div class="processo-body">
+          <div class="processo-meta" id="webhookMeta">Verificando...</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn btn-secondary btn-sm" id="btnTestarWebhook">&#8635; Testar</button>
+            <button class="btn btn-secondary btn-sm" id="btnReconfigurarWebhook">&#128279; Reconfigurar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TERMINAL DE ATIVIDADE RECENTE -->
+    <div class="card" style="margin-top:16px">
+      <div class="card-header"><span class="card-icon"><i data-lucide="monitor"></i></span><h2 class="card-title">Atividade Recente</h2>
+        <div class="terminal-controls">
+          <span class="terminal-dot red"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
+          <button class="btn-ghost btn-sm" id="btnLimparLogControle">Limpar</button>
+        </div>
+      </div>
+      <div class="terminal" id="terminalControle" style="height:200px"></div>
+    </div>
+  </section>
+
+  <!-- MODAL CALENDÁRIO PRETO (SELEÇÃO DE PERÍODO PERSONALIZADO) -->
+  <div class="modal hidden" id="modalCalendarioPreto">
+    <div class="modal-content modal-dark-calendar" style="max-width:420px;background:#090D14;border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:24px;">
+      <div class="modal-header" style="border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:14px;margin-bottom:18px;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:36px;height:36px;border-radius:10px;background:rgba(16,185,129,0.15);color:#10b981;display:flex;align-items:center;justify-content:center"><i data-lucide="calendar" style="width:20px;height:20px;color:var(--primary)"></i></div>
+          <div>
+            <h3 style="margin:0;font-size:16px;font-weight:700;color:#fff">Selecionar Período</h3>
+            <p style="margin:2px 0 0;font-size:12px;color:var(--text3)">Escolha as datas de início e fim</p>
+          </div>
+        </div>
+        <button class="btn-ghost" id="btnFecharModalCalendario" style="color:var(--text3);font-size:20px">✕</button>
+      </div>
+
+      <div class="modal-body" style="display:flex;flex-direction:column;gap:16px;">
+        <div class="form-group">
+          <label class="form-label" style="color:var(--text2);font-size:12px;font-weight:600;">Data Inicial</label>
+          <input type="date" class="form-input dark-date-input" id="dashDataInicio" style="background:#111827;border:1px solid rgba(255,255,255,0.1);color:#fff;border-radius:10px;padding:10px 14px;" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" style="color:var(--text2);font-size:12px;font-weight:600;">Data Final</label>
+          <input type="date" class="form-input dark-date-input" id="dashDataFim" style="background:#111827;border:1px solid rgba(255,255,255,0.1);color:#fff;border-radius:10px;padding:10px 14px;" />
+        </div>
+      </div>
+
+      <div class="modal-footer" style="margin-top:24px;display:flex;gap:10px;justify-content:flex-end;">
+        <button class="btn btn-secondary" id="btnCancelarCalendario" style="border-radius:10px">Cancelar</button>
+        <button class="btn btn-primary" id="btnAplicarCalendario" style="background:#10B981;color:#FFFFFF;font-weight:700;border:none;border-radius:10px">Aplicar Filtro</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================
+       SEÇÃO: DISPARO
+  ============================== -->
+  <section class="section" id="section-disparo">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Disparo em Massa</h1>
+        <p class="page-sub">Carregue seu CSV e inicie a prospecção automática</p>
+      </div>
+      <div class="header-badges">
+        <span class="badge badge-blue" id="badgeTotal">0 leads</span>
+        <span class="badge badge-green" id="badgeEnviados">0 enviados</span>
+        <span class="badge badge-red" id="badgeErros">0 erros</span>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-icon"><i data-lucide="folder-open"></i></span>
+          <h2 class="card-title">Carregar CSV</h2>
+        </div>
+        <div class="card-body">
+          <div class="drop-zone" id="dropZone">
+            <input type="file" id="csvInput" accept=".csv" hidden />
+            <div class="drop-content" id="dropContent">
+              <i data-lucide="file-text" class="drop-icon"></i>
+              <p class="drop-title">Arraste o CSV aqui</p>
+              <p class="drop-sub">ou clique para selecionar</p>
+              <p class="drop-hint">Colunas necessárias: <code>title</code>, <code>phone</code></p>
+            </div>
+          </div>
+          <div class="csv-preview hidden" id="csvPreview">
+            <div class="preview-header">
+              <span class="preview-count" id="previewCount"></span>
+              <button class="btn-ghost btn-sm" id="btnTrocarCsv">Trocar arquivo</button>
+            </div>
+            <div class="table-wrap">
+              <table class="leads-table" id="leadsTable">
+                <thead><tr><th>#</th><th>Empresa</th><th>Telefone</th><th>Categoria</th><th>Status</th></tr></thead>
+                <tbody id="leadsTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-icon"><i data-lucide="settings"></i></span>
+          <h2 class="card-title">Configuração do Disparo</h2>
+        </div>
+        <div class="card-body">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Delay mínimo (seg)</label>
+              <input type="number" class="form-input" id="cfgDelayMin" value="45" min="10" max="300" />
+              <span class="form-hint">Mínimo recomendado: 30s</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Delay máximo (seg)</label>
+              <input type="number" class="form-input" id="cfgDelayMax" value="90" min="20" max="600" />
+              <span class="form-hint">Máximo recomendado: 120s</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Limite de envios</label>
+              <input type="number" class="form-input" id="cfgLimite" value="50" min="0" />
+              <span class="form-hint">0 = sem limite</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Estimativa de tempo</label>
+              <div class="estimate-box" id="estimateBox">—</div>
+            </div>
+          </div>
+          <div class="progress-wrap" id="progressWrap">
+            <div class="progress-info">
+              <span id="progressLabel">Aguardando...</span>
+              <span id="progressPct">0%</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+            <div class="progress-detail" id="progressDetail"></div>
+          </div>
+          <div class="action-row">
+            <button class="btn btn-primary btn-lg" id="btnIniciar" disabled>
+              <i data-lucide="play" style="width:15px;height:15px"></i> Iniciar Disparo
+            </button>
+            <button class="btn btn-danger btn-lg hidden" id="btnParar">
+              <i data-lucide="square" style="width:15px;height:15px"></i> Parar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-terminal">
+      <div class="card-header">
+        <span class="card-icon"><i data-lucide="terminal"></i></span>
+        <h2 class="card-title">Log em Tempo Real</h2>
+        <div class="terminal-controls">
+          <span class="terminal-dot red"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
+          <button class="btn-ghost btn-sm" id="btnLimparLog">Limpar</button>
+          <label class="toggle-wrap">
+            <input type="checkbox" id="chkAutoScroll" checked />
+            <span class="toggle-label">Auto-scroll</span>
+          </label>
+        </div>
+      </div>
+      <div class="terminal" id="terminal">
+        <div class="terminal-placeholder"><span>&#9889; Aguardando início do disparo...</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================
+       SEÇÃO: SCRAPER GOOGLE MAPS
+  ============================== -->
+  <section class="section" id="section-scraper">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Scraper Google Maps</h1>
+        <p class="page-sub">Encontre empresas no Google Maps e importe diretamente para o disparo</p>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <span class="badge badge-blue" id="scraperBadgeTotal" style="display:none">0 encontradas</span>
+        <button class="btn btn-secondary" id="btnVerFavoritos">&#9733; Favoritos</button>
+        <button class="btn btn-secondary" id="btnVerListas">&#128196; Minhas Listas</button>
+      </div>
+    </div>
+
+    <!-- Painel de busca -->
+    <div class="card scraper-busca-card">
+      <div class="card-header">
+        <span class="card-icon"><i data-lucide="search"></i></span>
+        <h2 class="card-title">Buscar Empresas</h2>
+        <span class="scraper-status-badge hidden" id="scraperStatusBadge">Buscando...</span>
+      </div>
+      <div class="card-body">
+
+        <!-- Linha 1: Segmento + País + Estado + Cidade -->
+        <div class="scraper-form-grid">
+          <div class="form-group scraper-campo-query">
+            <label class="form-label">Segmento / Tipo de empresa <span style="color:var(--accent)">*</span></label>
+            <input type="text" class="form-input" id="scraperQuery"
+              placeholder="Ex: clínicas médicas, academias, restaurantes, dentistas..." />
+            <span class="form-hint">Pode usar qualquer termo — o scraper busca no Google Maps</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">País</label>
+            <select class="form-input" id="scraperPais">
+              <option value="BR" data-nome="Brasil">&#127463;&#127479; Brasil</option>
+              <option value="US" data-nome="United States">&#127482;&#127480; Estados Unidos</option>
+              <option value="CO" data-nome="Colombia">&#127464;&#127476; Colômbia</option>
+              <option value="MX" data-nome="Mexico">&#127474;&#127485; México</option>
+              <option value="AR" data-nome="Argentina">&#127462;&#127479; Argentina</option>
+              <option value="CL" data-nome="Chile">&#127464;&#127473; Chile</option>
+              <option value="PE" data-nome="Peru">&#127477;&#127466; Peru</option>
+              <option value="UY" data-nome="Uruguay">&#127482;&#127486; Uruguai</option>
+              <option value="PY" data-nome="Paraguay">&#127477;&#127486; Paraguai</option>
+              <option value="BO" data-nome="Bolivia">&#127463;&#127476; Bolívia</option>
+              <option value="EC" data-nome="Ecuador">&#127466;&#127464; Equador</option>
+              <option value="VE" data-nome="Venezuela">&#127483;&#127466; Venezuela</option>
+              <option value="PT" data-nome="Portugal">&#127477;&#127481; Portugal</option>
+              <option value="ES" data-nome="España">&#127466;&#127480; Espanha</option>
+              <option value="FR" data-nome="France">&#127467;&#127479; França</option>
+              <option value="DE" data-nome="Germany">&#127465;&#127466; Alemanha</option>
+              <option value="IT" data-nome="Italy">&#127470;&#127481; Itália</option>
+              <option value="GB" data-nome="United Kingdom">&#127468;&#127463; Reino Unido</option>
+              <option value="CA" data-nome="Canada">&#127464;&#127462; Canadá</option>
+              <option value="AU" data-nome="Australia">&#127462;&#127482; Austrália</option>
+              <option value="JP" data-nome="Japan">&#127471;&#127477; Japão</option>
+              <option value="CN" data-nome="China">&#127464;&#127475; China</option>
+              <option value="AE" data-nome="UAE">&#127462;&#127466; Emirados Árabes</option>
+              <option value="ZA" data-nome="South Africa">&#127487;&#127462; África do Sul</option>
+              <option value="NG" data-nome="Nigeria">&#127475;&#127468; Nigéria</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Estado / Região <span style="color:var(--text3)">(opcional)</span></label>
+            <input type="text" class="form-input" id="scraperEstado"
+              placeholder="Ex: São Paulo, Texas, Antioquia..." />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Cidade <span style="color:var(--text3)">(opcional)</span></label>
+            <input type="text" class="form-input" id="scraperCidade"
+              placeholder="Ex: São Paulo, Houston, Medellín..." />
+          </div>
+        </div>
+
+        <!-- Linha 2: Filtros e limite -->
+        <div class="scraper-filtros-linha" style="margin-top:16px">
+          <div class="form-group" style="min-width:140px">
+            <label class="form-label">Máx. resultados</label>
+            <select class="form-input" id="scraperLimite">
+              <option value="10">10 empresas</option>
+              <option value="20" selected>20 empresas</option>
+              <option value="30">30 empresas</option>
+              <option value="50">50 empresas</option>
+              <option value="75">75 empresas</option>
+              <option value="100">100 empresas</option>
+            </select>
+          </div>
+
+          <!-- Filtros de resultado (lado cliente) -->
+          <div class="scraper-filtros-rapidos">
+            <span class="scraper-filtro-label">Filtrar resultados:</span>
+            <label class="scraper-chip-filtro">
+              <input type="checkbox" id="filtroComTelefone" checked />
+              <span>Com telefone</span>
+            </label>
+            <label class="scraper-chip-filtro">
+              <input type="checkbox" id="filtroComSite" />
+              <span>Com site</span>
+            </label>
+            <label class="scraper-chip-filtro">
+              <input type="checkbox" id="filtroSemSite" />
+              <span>Sem site</span>
+            </label>
+            <div class="scraper-filtro-nota" style="display:flex;align-items:center;gap:6px">
+              <span class="form-label" style="margin:0">Nota mín.</span>
+              <select class="form-input" id="filtroNotaMin" style="width:90px;padding:6px 8px">
+                <option value="0">Todas</option>
+                <option value="3">&#9733; 3.0+</option>
+                <option value="3.5">&#9733; 3.5+</option>
+                <option value="4">&#9733; 4.0+</option>
+                <option value="4.5">&#9733; 4.5+</option>
+              </select>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px">
+              <span class="form-label" style="margin:0">Aval. mín.</span>
+              <select class="form-input" id="filtroAvalMin" style="width:100px;padding:6px 8px">
+                <option value="0">Todas</option>
+                <option value="10">10+</option>
+                <option value="50">50+</option>
+                <option value="100">100+</option>
+                <option value="500">500+</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="scraper-busca-actions">
+            <button class="btn btn-primary btn-lg" id="btnIniciarScraper">
+              <i data-lucide="search" style="width:15px;height:15px"></i> Buscar
+            </button>
+            <button class="btn btn-danger hidden" id="btnPararScraper">
+              <i data-lucide="square" style="width:15px;height:15px"></i> Parar
+            </button>
+          </div>
+        </div>
+
+        <!-- Barra de progresso do scraper -->
+        <div class="scraper-progress-wrap hidden" id="scraperProgressWrap">
+          <div class="scraper-progress-bar">
+            <div class="scraper-progress-fill" id="scraperProgressFill" style="width:0%"></div>
+          </div>
+          <div class="scraper-progress-info">
+            <span id="scraperProgressLabel">Iniciando...</span>
+            <span id="scraperProgressCount">0 / 0</span>
+          </div>
+          <!-- Log ao vivo compacto -->
+          <div class="scraper-log" id="scraperLog"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toolbar de resultados -->
+    <div class="scraper-results-toolbar hidden" id="scraperToolbar">
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+        <span class="scraper-result-count" id="scraperResultCount">0 resultados</span>
+        <input type="text" class="form-input" id="scraperBuscaLocal"
+          placeholder="Filtrar por nome, cidade, categoria..."
+          style="width:220px" />
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <button class="btn btn-secondary btn-sm" id="btnSelecionarTodos">Selecionar todos</button>
+        <button class="btn btn-secondary btn-sm" id="btnAdicionarSelecionados">
+          <i data-lucide="plus" style="width:13px;height:13px"></i> Adicionar à lista
+        </button>
+        <button class="btn btn-secondary btn-sm" id="btnExportarCSV">
+          <i data-lucide="download" style="width:13px;height:13px"></i> Exportar CSV
+        </button>
+        <span style="color:var(--text3);font-size:12px" id="scraperSelCount"></span>
+      </div>
+    </div>
+
+    <!-- Grid de resultados -->
+    <div class="scraper-grid" id="scraperGrid">
+      <div class="empty-state scraper-empty" id="scraperEmpty">
+        <span class="empty-icon"><i data-lucide="map-pin"></i></span>
+        <p>Configure a busca e clique em <strong>Buscar</strong> para encontrar empresas</p>
+        <p class="empty-sub">Os resultados aparecerão aqui em tempo real enquanto o scraper coleta os dados</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL: Favoritos -->
+  <div class="modal-overlay hidden" id="modalFavoritos">
+    <div class="modal" style="max-width:640px">
+      <div class="modal-header">
+        <h3 class="modal-title">&#9733; Favoritos</h3>
+        <button class="modal-close" id="btnFecharFavoritos">&#10005;</button>
+      </div>
+      <div class="modal-body" id="modalFavoritosBody">
+        <div class="empty-state" style="padding:40px 0">
+          <span class="empty-icon"><i data-lucide="star"></i></span>
+          <p>Nenhum favorito salvo ainda.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Minhas Listas -->
+  <div class="modal-overlay hidden" id="modalListas">
+    <div class="modal" style="max-width:640px">
+      <div class="modal-header">
+        <h3 class="modal-title">&#128196; Minhas Listas</h3>
+        <button class="modal-close" id="btnFecharListas">&#10005;</button>
+      </div>
+      <div class="modal-body">
+        <div style="display:flex;gap:10px;margin-bottom:16px">
+          <input type="text" class="form-input" id="novaListaNome" placeholder="Nome da nova lista..." style="flex:1" />
+          <button class="btn btn-primary" id="btnCriarLista">+ Criar</button>
+        </div>
+        <div id="modalListasBody">
+          <div class="empty-state" style="padding:30px 0">
+            <span class="empty-icon"><i data-lucide="list"></i></span>
+            <p>Nenhuma lista criada ainda.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Adicionar à lista -->
+  <div class="modal-overlay hidden" id="modalAdicionarLista">
+    <div class="modal" style="max-width:400px">
+      <div class="modal-header">
+        <h3 class="modal-title">Adicionar à Lista</h3>
+        <button class="modal-close" id="btnFecharAdicionarLista">&#10005;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:13px;color:var(--text3);margin-bottom:14px" id="adicionarListaInfo">
+          Selecione uma lista ou crie uma nova:
+        </p>
+        <div id="adicionarListaOpcoes" style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px"></div>
+        <div style="display:flex;gap:8px">
+          <input type="text" class="form-input" id="novaListaNome2" placeholder="Nova lista..." style="flex:1" />
+          <button class="btn btn-primary btn-sm" id="btnCriarAdicionarLista">+ Criar e adicionar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================
+       SEÇÃO: CONVERSAS (com histórico de chat)
+  ============================== -->
+  <section class="section" id="section-conversas">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Conversas</h1>
+        <p class="page-sub">Histórico e análise das conversas com leads — clique num card para ver o chat completo</p>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center">
+        <input type="text" class="form-input" id="conversasBusca" placeholder="Buscar por nome ou número..." style="width:220px" />
+        <button class="btn btn-secondary" id="btnAtualizarConversas">&#8635; Atualizar</button>
+      </div>
+    </div>
+
+    <!-- Layout: grid de cards + painel lateral -->
+    <div class="conversas-layout" id="conversasLayout">
+      <!-- Grid de cards -->
+      <div class="conversas-grid" id="conversasGrid">
+        <div class="empty-state">
+          <span class="empty-icon"><i data-lucide="message-square"></i></span>
+          <p>Nenhuma conversa ainda.</p>
+          <p class="empty-sub">As conversas aparecerão aqui quando o listener estiver ativo.</p>
+        </div>
+      </div>
+
+      <!-- Painel lateral do histórico -->
+      <div class="chat-panel hidden" id="chatPanel">
+        <div class="chat-panel-header">
+          <div class="chat-panel-info">
+            <div class="chat-panel-nome" id="chatPanelNome">—</div>
+            <div class="chat-panel-phone" id="chatPanelPhone">—</div>
+          </div>
+          <div class="chat-panel-badges">
+            <span class="chat-temp-badge" id="chatTempBadge">—</span>
+          </div>
+          <div class="chat-panel-actions">
+            <button class="btn btn-secondary btn-sm" id="btnChatRetomar" title="Reativar o bot para esse número">&#9654; Retomar Bot</button>
+            <button class="btn btn-secondary btn-sm" id="btnChatResetar" title="Apagar histórico da conversa">&#8635; Resetar</button>
+            <button class="btn-ghost btn-sm" id="btnFecharChat" title="Fechar painel" style="font-size:18px;padding:2px 8px">&#10005;</button>
+          </div>
+        </div>
+
+        <div class="chat-panel-meta" id="chatPanelMeta"></div>
+
+        <div class="chat-messages" id="chatMessages">
+          <div class="chat-loading">Carregando mensagens...</div>
+        </div>
+
+        <div class="chat-panel-footer">
+          <span class="chat-footer-info" id="chatFooterInfo"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================
+       SEÇÃO: RELATÓRIOS
+  ============================== -->
+  <section class="section" id="section-relatorios">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Relatórios</h1>
+        <p class="page-sub">Histórico de todas as sessões de disparo</p>
+      </div>
+      <button class="btn btn-secondary" id="btnAtualizarRel">&#8635; Atualizar</button>
+    </div>
+
+    <div class="stats-grid" id="statsGrid">
+      <div class="stat-card">
+        <span class="stat-icon"><i data-lucide="send"></i></span>
+        <span class="stat-value" id="statTotalEnviados">—</span>
+        <span class="stat-label">Total Enviados</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon"><i data-lucide="x-circle"></i></span>
+        <span class="stat-value" id="statTotalErros">—</span>
+        <span class="stat-label">Total Erros</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon"><i data-lucide="trending-up"></i></span>
+        <span class="stat-value" id="statTaxaMedia">—</span>
+        <span class="stat-label">Taxa Média</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon"><i data-lucide="calendar"></i></span>
+        <span class="stat-value" id="statSessoes">—</span>
+        <span class="stat-label">Sessões</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-icon"><i data-lucide="list"></i></span>
+        <h2 class="card-title">Sessões de Disparo</h2>
+      </div>
+      <div class="card-body p0">
+        <div class="table-wrap">
+          <table class="leads-table" id="relTable">
+            <thead>
+              <tr><th>Data/Hora</th><th>Total</th><th>Enviados</th><th>Erros</th><th>Taxa</th><th>Duração</th></tr>
+            </thead>
+            <tbody id="relTableBody">
+              <tr><td colspan="6" class="empty-row">Nenhuma sessão ainda</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================
+       SEÇÃO: CONFIGURAÇÕES
+  ============================== -->
+  <section class="section" id="section-configuracoes">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Configurações</h1>
+        <p class="page-sub">Todas as credenciais e parâmetros — salvo direto no .env</p>
+      </div>
+      <div style="display:flex;gap:10px">
+        <button class="btn btn-secondary" id="btnRecarregarEnv">&#8635; Recarregar</button>
+        <button class="btn btn-primary" id="btnSalvarConfig">Salvar Tudo</button>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header"><span class="card-icon"><i data-lucide="radio"></i></span><h2 class="card-title">Evolution API (WhatsApp)</h2></div>
+        <div class="card-body">
+          <div class="form-group">
+            <label class="form-label">URL da API</label>
+            <input type="text" class="form-input" id="cfgApiUrl" placeholder="http://localhost:8080" />
+          </div>
+          <div class="form-group" style="margin-top:12px">
+            <label class="form-label">API Key</label>
+            <div class="input-eye-wrap">
+              <input type="password" class="form-input" id="cfgApiKey" placeholder="sua_api_key" />
+              <button class="btn-eye" data-target="cfgApiKey">&#128065;</button>
+            </div>
+          </div>
+          <div class="form-group" style="margin-top:12px">
+            <label class="form-label">Nome da Instância <span style="color:var(--text3)">(EVOLUTION_INSTANCE)</span></label>
+            <input type="text" class="form-input" id="cfgInstance" placeholder="prospeccao" />
+          </div>
+          <div class="connection-test" style="margin-top:14px">
+            <button class="btn btn-secondary" id="btnTestarConexao">Testar Conexão</button>
+            <span class="test-result" id="testResult"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><span class="card-icon"><i data-lucide="bot"></i></span><h2 class="card-title">APIs Externas</h2></div>
+        <div class="card-body">
+          <div class="form-group">
+            <label class="form-label">Gemini API Key 1 <span style="color:var(--accent)">(obrigatória)</span></label>
+            <div class="input-eye-wrap">
+              <input type="password" class="form-input" id="cfgGeminiKey" placeholder="AIza..." />
+              <button class="btn-eye" data-target="cfgGeminiKey">&#128065;</button>
+            </div>
+            <span class="form-hint">Grátis em <a href="https://aistudio.google.com/apikey" target="_blank" class="link">aistudio.google.com</a></span>
+          </div>
+          <div class="form-group" style="margin-top:10px">
+            <label class="form-label">Gemini API Key 2 <span style="color:var(--text3)">(rodízio)</span></label>
+            <div class="input-eye-wrap">
+              <input type="password" class="form-input" id="cfgGeminiKey2" placeholder="AIza... (opcional)" />
+              <button class="btn-eye" data-target="cfgGeminiKey2">&#128065;</button>
+            </div>
+          </div>
+          <div class="form-group" style="margin-top:10px">
+            <label class="form-label">Gemini API Key 3</label>
+            <div class="input-eye-wrap">
+              <input type="password" class="form-input" id="cfgGeminiKey3" placeholder="AIza... (opcional)" />
+              <button class="btn-eye" data-target="cfgGeminiKey3">&#128065;</button>
+            </div>
+          </div>
+          <div class="form-group" style="margin-top:10px">
+            <label class="form-label">Gemini API Key 4</label>
+            <div class="input-eye-wrap">
+              <input type="password" class="form-input" id="cfgGeminiKey4" placeholder="AIza... (opcional)" />
+              <button class="btn-eye" data-target="cfgGeminiKey4">&#128065;</button>
+            </div>
+          </div>
+          <div class="form-group" style="margin-top:10px">
+            <label class="form-label">Gemini API Key 5</label>
+            <div class="input-eye-wrap">
+              <input type="password" class="form-input" id="cfgGeminiKey5" placeholder="AIza... (opcional)" />
+              <button class="btn-eye" data-target="cfgGeminiKey5">&#128065;</button>
+            </div>
+          </div>
+          <div class="info-box" style="margin-top:12px">
+            O bot alterna automaticamente entre as chaves se uma atingir o limite ou falhar.
+          </div>
+          <div class="form-group" style="margin-top:16px">
+            <label class="form-label">Mercado Pago Access Token</label>
+            <div class="input-eye-wrap">
+              <input type="password" class="form-input" id="cfgMpToken" placeholder="APP_USR-..." />
+              <button class="btn-eye" data-target="cfgMpToken">&#128065;</button>
+            </div>
+            <span class="form-hint">Painel MP &rarr; Credenciais de produção &rarr; Access Token</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><span class="card-icon"><i data-lucide="zap"></i></span><h2 class="card-title">Configurações de Disparo</h2></div>
+        <div class="card-body">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Delay mínimo (seg)</label>
+              <input type="number" class="form-input" id="cfgEnvDelayMin" placeholder="45" min="10" />
+              <span class="form-hint">Mín. recomendado: 30s</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Delay máximo (seg)</label>
+              <input type="number" class="form-input" id="cfgEnvDelayMax" placeholder="90" min="20" />
+              <span class="form-hint">Máx. recomendado: 120s</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Limite por sessão</label>
+              <input type="number" class="form-input" id="cfgEnvLimite" placeholder="50" min="0" />
+              <span class="form-hint">0 = sem limite</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Porta do Webhook</label>
+              <input type="number" class="form-input" id="cfgEnvWebhookPort" placeholder="3001" />
+              <span class="form-hint">Requer reinício para aplicar</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><span class="card-icon"><i data-lucide="shield"></i></span><h2 class="card-title">Leads &amp; Anti-Ban</h2></div>
+        <div class="card-body">
+          <div class="checklist" style="margin-bottom:16px">
+            <div class="check-item check-ok">&#10003; Delay aleatório entre envios</div>
+            <div class="check-item check-ok">&#10003; Presença "digitando..." simulada</div>
+            <div class="check-item check-ok">&#10003; 126+ variações de mensagem</div>
+            <div class="check-item check-ok">&#10003; Nunca envia 2x pro mesmo número</div>
+            <div class="check-item check-warn">&#9888; Limite recomendado: 100 msg/dia</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Leads já enviados</label>
+            <div style="display:flex;gap:10px;align-items:center;margin-top:6px">
+              <span class="estimate-box" id="cfgLeadsEnviados" style="flex:1;font-size:13px">—</span>
+              <button class="btn btn-danger btn-sm" id="btnResetLeads">Resetar enviados</button>
+            </div>
+            <span class="form-hint">Reseta o histórico para poder disparar novamente para os mesmos números</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="save-bar">
+      <button class="btn btn-primary" id="btnSalvarConfigBottom">Salvar Configurações</button>
+      <span class="save-msg hidden" id="saveMsg">&#10003; Configurações salvas no .env!</span>
+    </div>
+  </section>
+
+  <!-- ==============================
+       SEÇÃO: MENSAGENS
+  ============================== -->
+  <section class="section" id="section-mensagens">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Mensagens</h1>
+        <p class="page-sub">Configure variações, ordem e delays de cada mensagem enviada pelo bot</p>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <span class="badge badge-blue" id="msgBadgeCombinacoes">— combinações</span>
+        <button class="btn btn-secondary" id="btnPreviewMsg">Preview</button>
+        <button class="btn btn-primary" id="btnSalvarMensagens">Salvar Tudo</button>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:20px">
+      <div class="card-header">
+        <span class="card-icon"><i data-lucide="settings"></i></span>
+        <h2 class="card-title">Configurações Gerais</h2>
+      </div>
+      <div class="card-body">
+        <div class="form-grid" style="grid-template-columns:repeat(3,1fr)">
+          <div class="form-group">
+            <label class="form-label">Delay entre mensagens do mesmo lead (seg)</label>
+            <input type="number" class="form-input" id="msgDelayEntreVariacoes" value="3" min="1" max="30" />
+            <span class="form-hint">Pausa antes de enviar a próxima mensagem em sequência</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Variável de personalização</label>
+            <input type="text" class="form-input" id="msgVariavelNome" value="{empresa}" />
+            <span class="form-hint">Será substituída pelo nome da empresa no envio</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Opções</label>
+            <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px">
+              <label class="toggle-wrap">
+                <input type="checkbox" id="msgSimularDigitacao" checked />
+                <span class="toggle-label" style="color:var(--text2)">Simular digitação ("digitando...")</span>
+              </label>
+              <label class="toggle-wrap">
+                <input type="checkbox" id="msgPersonalizarNome" checked />
+                <span class="toggle-label" style="color:var(--text2)">Personalizar nome da empresa</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="gruposMensagens"></div>
+    <button class="btn-add-grupo" id="btnAdicionarGrupo">
+      <span>+</span> Adicionar novo grupo de mensagens
+    </button>
+  </section>
+
+  <!-- MODAL: Preview de mensagem -->
+  <div class="modal-overlay hidden" id="modalPreview">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title">Preview da Mensagem</h3>
+        <button class="modal-close" id="btnFecharPreview">&#10005;</button>
+      </div>
+      <div class="modal-body">
+        <div class="preview-empresa-row">
+          <label class="form-label">Nome de teste:</label>
+          <input type="text" class="form-input" id="previewNomeEmpresa" value="Clínica São Paulo" style="width:220px" />
+          <button class="btn btn-secondary btn-sm" id="btnGerarPreview">&#8635; Gerar</button>
+        </div>
+        <div class="msg-bubble-wrap" id="msgBubbles"></div>
+        <div class="preview-info" id="previewInfo"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================
+       SEÇÃO: GEMINI IA
+  ============================== -->
+  <section class="section" id="section-gemini">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Gemini IA</h1>
+        <p class="page-sub">Configure e controle o comportamento do assistente de respostas</p>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center">
+        <span class="gemini-status-badge" id="geminiStatusBadge">Carregando...</span>
+        <label class="big-toggle" title="Ligar/desligar Gemini">
+          <input type="checkbox" id="toggleGeminiPrincipal" />
+          <span class="big-toggle-track"></span>
+          <span class="big-toggle-thumb"></span>
+        </label>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card" style="grid-column:1/-1">
+        <div class="card-header">
+          <span class="card-icon"><i data-lucide="pencil"></i></span>
+          <h2 class="card-title">Prompt do Sistema (Persona do Bot)</h2>
+          <span class="form-hint" style="margin-left:auto">Instruções que definem como o bot se comporta em TODAS as conversas</span>
+        </div>
+        <div class="card-body">
+          <div class="prompt-toolbar">
+            <button class="btn btn-secondary btn-sm" id="btnPromptRestaurar">Restaurar padrão</button>
+            <button class="btn btn-secondary btn-sm" id="btnDiagnosticoGemini">Testar API Key</button>
+            <span class="prompt-chars" id="promptChars">0 caracteres</span>
+          </div>
+          <textarea class="prompt-textarea" id="geminiPrompt" placeholder="Digite as instruções do bot aqui..."></textarea>
+          <div class="info-box" style="margin-top:12px">
+            <strong>Dicas de prompt:</strong><br>
+            &bull; Use <code>[FECHAR_NEGOCIO]</code> no final da resposta para mover automaticamente o lead para Negócios<br>
+            &bull; Defina nome, personalidade, serviços e objetivos do bot<br>
+            &bull; Quanto mais específico, melhor a qualidade das respostas
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><span class="card-icon"><i data-lucide="settings"></i></span><h2 class="card-title">Comportamento</h2></div>
+        <div class="card-body">
+          <div class="checklist">
+            <label class="check-toggle-item">
+              <input type="checkbox" id="geminiRespondeSempre" />
+              <span>Responder mesmo sem histórico (primeiro contato)</span>
+            </label>
+            <label class="check-toggle-item">
+              <input type="checkbox" id="geminiAnaliseAuto" checked />
+              <span>Análise automática de temperatura a cada 4 mensagens</span>
+            </label>
+            <label class="check-toggle-item">
+              <input type="checkbox" id="geminiMoverNegocios" checked />
+              <span>Mover para Negócios automaticamente quando detectar interesse em fechar</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><span class="card-icon"><i data-lucide="flask-conical"></i></span><h2 class="card-title">Teste Rápido</h2></div>
+        <div class="card-body">
+          <div class="form-group">
+            <label class="form-label">Simule uma mensagem de cliente</label>
+            <textarea class="form-input" id="geminiTestInput" rows="3" placeholder="Ex: Quanto custa um site?"></textarea>
+          </div>
+          <button class="btn btn-secondary" id="btnTestarGemini" style="margin-top:10px">Gerar resposta</button>
+          <div class="gemini-test-result hidden" id="geminiTestResult">
+            <div class="msg-bubble" style="margin-top:14px;max-width:100%">
+              <div class="msg-bubble-text" id="geminiTestResultText"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="save-bar">
+      <button class="btn btn-primary" id="btnSalvarGemini">Salvar configurações do Gemini</button>
+      <span class="save-msg hidden" id="saveMsgGemini">&#10003; Salvo!</span>
+    </div>
+  </section>
+
+  <!-- ==============================
+       SEÇÃO: NEGÓCIOS
+  ============================== -->
+  <section class="section" id="section-negocios">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Negócios</h1>
+        <p class="page-sub">Leads quentes que demonstraram interesse em fechar — envie a cobrança com 1 clique</p>
+      </div>
+      <button class="btn btn-secondary" id="btnAtualizarNegocios">&#8635; Atualizar</button>
+    </div>
+    <div id="negociosGrid" class="negocios-grid">
+      <div class="empty-state">
+        <span class="empty-icon"><i data-lucide="flame"></i></span>
+        <p>Nenhum negócio em aberto.</p>
+        <p class="empty-sub">Quando um lead demonstrar interesse em contratar, ele aparecerá aqui automaticamente.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL: Gerar cobrança -->
+  <div class="modal-overlay hidden" id="modalCobranca">
+    <div class="modal" style="max-width:480px">
+      <div class="modal-header">
+        <h3 class="modal-title">Gerar Cobrança PIX</h3>
+        <button class="modal-close" id="btnFecharCobranca">&#10005;</button>
+      </div>
+      <div class="modal-body" id="modalCobrancaBody">
+        <div class="form-group">
+          <label class="form-label">Cliente</label>
+          <div class="cobranca-cliente" id="cobrancaClienteInfo"></div>
+        </div>
+        <div class="form-group" style="margin-top:14px">
+          <label class="form-label">Valor (R$)</label>
+          <input type="number" class="form-input" id="cobrancaValor" placeholder="1500.00" min="1" step="0.01" />
+        </div>
+        <div class="form-group" style="margin-top:14px">
+          <label class="form-label">Descrição do serviço</label>
+          <input type="text" class="form-input" id="cobrancaDescricao" placeholder="Site profissional + agendamento online" />
+        </div>
+        <div class="form-group" style="margin-top:14px">
+          <label class="form-label">E-mail do cliente (para MP)</label>
+          <input type="email" class="form-input" id="cobrancaEmail" placeholder="cliente@email.com" />
+        </div>
+        <button class="btn btn-primary btn-lg" id="btnGerarCobranca" style="width:100%;margin-top:18px">
+          Gerar PIX e Enviar pelo WhatsApp
+        </button>
+      </div>
+      <div class="hidden" id="cobrancaResultado">
+        <div class="modal-body" style="padding-top:0">
+          <div class="pix-resultado">
+            <div class="pix-status">&#10003; PIX gerado e enviado pelo WhatsApp!</div>
+            <div class="pix-qr-wrap"><img id="pixQrImg" src="" alt="QR Code PIX" class="pix-qr" /></div>
+            <div class="form-group" style="margin-top:12px">
+              <label class="form-label">Copia e Cola</label>
+              <div class="pix-copia-wrap">
+                <textarea class="form-input pix-copia" id="pixCopiaCola" readonly rows="3"></textarea>
+                <button class="btn btn-secondary btn-sm" id="btnCopiarPix">Copiar</button>
+              </div>
+            </div>
+            <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
+              <button class="btn btn-secondary" id="btnVerificarPagamento">&#8635; Verificar Pagamento</button>
+              <button class="btn btn-ghost" id="btnFecharCobrancaResult">Fechar</button>
+            </div>
+            <div class="pix-pagamento-status hidden" id="pixPagamentoStatus"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================
+       SEÇÃO: CLIENTES
+  ============================== -->
+  <section class="section" id="section-clientes">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Clientes</h1>
+        <p class="page-sub">Pagamentos aprovados — gerencie o desenvolvimento e entrega dos projetos</p>
+      </div>
+      <div style="display:flex;gap:10px">
+        <button class="btn btn-secondary" id="btnAtualizarClientes">&#8635; Atualizar</button>
+      </div>
+    </div>
+    <div class="filtros-status" id="filtrosClientes">
+      <button class="filtro-btn active" data-status="todos">Todos</button>
+      <button class="filtro-btn" data-status="pendente">Pendente</button>
+      <button class="filtro-btn" data-status="em_desenvolvimento">Em Desenvolvimento</button>
+      <button class="filtro-btn" data-status="entregue">Entregue</button>
+    </div>
+    <div id="clientesGrid" class="clientes-grid">
+      <div class="empty-state">
+        <span class="empty-icon"><i data-lucide="users"></i></span>
+        <p>Nenhum cliente ainda.</p>
+        <p class="empty-sub">Quando um pagamento for aprovado, o cliente aparecerá aqui.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL: Editar cliente -->
+  <div class="modal-overlay hidden" id="modalCliente">
+    <div class="modal" style="max-width:500px">
+      <div class="modal-header">
+        <h3 class="modal-title">Editar Cliente</h3>
+        <button class="modal-close" id="btnFecharCliente">&#10005;</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="clienteEditId" />
+        <div class="form-group">
+          <label class="form-label">Nome</label>
+          <input type="text" class="form-input" id="clienteEditNome" readonly />
+        </div>
+        <div class="form-group" style="margin-top:14px">
+          <label class="form-label">Tipo de Site / Serviço contratado</label>
+          <input type="text" class="form-input" id="clienteEditTipoSite" placeholder="Ex: Site institucional + agendamento + WhatsApp" />
+          <span class="form-hint">Preencha ao iniciar o desenvolvimento</span>
+        </div>
+        <div class="form-group" style="margin-top:14px">
+          <label class="form-label">Status do projeto</label>
+          <div class="status-selector" id="clienteStatusSelector">
+            <label class="status-opt" data-val="pendente">
+              <input type="radio" name="clienteStatus" value="pendente" />
+              <span class="status-opt-label pendente">Pendente</span>
+            </label>
+            <label class="status-opt" data-val="em_desenvolvimento">
+              <input type="radio" name="clienteStatus" value="em_desenvolvimento" />
+              <span class="status-opt-label em_desenvolvimento">Em Dev</span>
+            </label>
+            <label class="status-opt" data-val="entregue">
+              <input type="radio" name="clienteStatus" value="entregue" />
+              <span class="status-opt-label entregue">Entregue</span>
+            </label>
+          </div>
+        </div>
+        <div class="form-group" style="margin-top:14px">
+          <label class="form-label">Observações internas</label>
+          <textarea class="form-input" id="clienteEditObs" rows="3" placeholder="Notas, requisitos especiais, links, etc."></textarea>
+        </div>
+        <button class="btn btn-primary" id="btnSalvarCliente" style="width:100%;margin-top:18px">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================
+       SEÇÃO: GERAR PIX
+  ============================== -->
+  <section class="section" id="section-pagamento">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Gerar Pagamento (Checkout Pro)</h1>
+        <p class="page-sub">Crie um link de pagamento completo (PIX, Cartão, Boleto, Mercado Pago) e envie pelo WhatsApp</p>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header"><span class="card-icon"><i data-lucide="clipboard-list"></i></span><h2 class="card-title">Dados da Cobrança</h2></div>
+        <div class="card-body">
+          <div class="form-group">
+            <label class="form-label">Valor (R$)</label>
+            <input type="number" class="form-input" id="pixValor" placeholder="1500.00" min="0.01" step="0.01" />
+          </div>
+          <div class="form-group" style="margin-top:12px">
+            <label class="form-label">Descrição do serviço</label>
+            <input type="text" class="form-input" id="pixDescricao" placeholder="Site profissional + agendamento online" />
+          </div>
+          <div class="form-group" style="margin-top:12px">
+            <label class="form-label">Nome do cliente</label>
+            <input type="text" class="form-input" id="pixNomeCliente" placeholder="João Silva" />
+          </div>
+          <div class="form-group" style="margin-top:12px">
+            <label class="form-label">E-mail do cliente (para Mercado Pago)</label>
+            <input type="email" class="form-input" id="pixEmailCliente" placeholder="cliente@email.com" />
+          </div>
+          <div class="form-group" style="margin-top:12px">
+            <label class="form-label">Enviar pelo WhatsApp para (opcional)</label>
+            <div style="display:flex;gap:8px;align-items:center">
+              <input type="text" class="form-input" id="pixNumeroEnvio" placeholder="5543999354089 (apenas dígitos)" style="flex:1" />
+            </div>
+            <span class="form-hint">Se preenchido, envia a mensagem de cobrança automaticamente</span>
+          </div>
+          <button class="btn btn-primary btn-lg" id="btnGerarPix" style="width:100%;margin-top:18px">Gerar Link de Pagamento</button>
+        </div>
+      </div>
+
+      <div class="card" id="cardPixResultado">
+        <div class="card-header"><span class="card-icon"><i data-lucide="check-circle"></i></span><h2 class="card-title">Cobrança Gerada</h2></div>
+        <div class="card-body">
+          <div class="pix-resultado-standalone hidden" id="pixResultadoArea">
+            <div class="pix-valor-box" id="pixValorGerado"></div>
+            <div class="pix-qr-wrap" id="pixQrWrap" style="margin:16px 0">
+              <img id="pixQrImgStandalone" src="" alt="QR Code PIX" class="pix-qr" style="display:none" />
+            </div>
+            <div id="pixTicketWrap" class="hidden" style="margin-bottom:12px">
+              <label class="form-label">Link Checkout Pro (Mercado Pago)</label>
+              <a id="pixTicketLink" href="#" target="_blank" class="pix-ticket-link">Abrir Checkout Pro</a>
+            </div>
+            <div class="form-group" style="margin-bottom:14px">
+              <label class="form-label">Mensagem pronta para copiar e enviar</label>
+              <textarea class="form-input" id="pixMensagemCompleta" readonly rows="9" style="font-size:12.5px;line-height:1.6;resize:vertical;font-family:var(--font)"></textarea>
+              <button class="btn btn-primary" id="btnCopiarMensagemCompleta" style="width:100%;margin-top:8px">
+                <i data-lucide="copy" style="width:15px;height:15px"></i> Copiar Mensagem Completa
+              </button>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Link de Pagamento Copia e Cola</label>
+              <div class="pix-copia-wrap">
+                <textarea class="form-input pix-copia" id="pixCopiaCola2" readonly rows="3"></textarea>
+                <button class="btn btn-primary" id="btnCopiarPix2">Copiar Link</button>
+              </div>
+            </div>
+            <div id="pixEnvioStatus" class="hidden" style="margin-top:10px"></div>
+            <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
+              <input type="text" class="form-input" id="pixReenviarNum" placeholder="Reenviar para outro número..." style="flex:1" />
+              <button class="btn btn-secondary" id="btnReenviarPix">Enviar</button>
+            </div>
+            <div style="margin-top:12px">
+              <button class="btn btn-secondary btn-sm" id="btnVerificarPixStatus">&#8635; Verificar se foi pago</button>
+              <span class="pix-pagamento-status hidden" id="pixStatusCheck" style="margin-left:10px"></span>
+            </div>
+          </div>
+          <div class="empty-state" id="pixPlaceholder" style="padding:40px 0">
+            <span class="empty-icon"><i data-lucide="credit-card"></i></span>
+            <p>Preencha os dados e clique em Gerar Link de Pagamento</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================
+       SEÇÃO: AGENDAMENTOS
+  ============================== -->
+  <section class="section" id="section-agendamento">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Agendamentos</h1>
+        <p class="page-sub">Programe disparos para uma data e horário específicos</p>
+      </div>
+      <button class="btn btn-primary" id="btnNovoAgendamento">+ Novo Agendamento</button>
+    </div>
+    <div id="agendamentosLista" class="agendamentos-lista">
+      <div class="empty-state">
+        <span class="empty-icon"><i data-lucide="calendar"></i></span>
+        <p>Nenhum agendamento criado.</p>
+        <p class="empty-sub">Clique em "Novo Agendamento" para programar um disparo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL: Novo Agendamento -->
+  <div class="modal-overlay hidden" id="modalAgendamento">
+    <div class="modal" style="max-width:560px">
+      <div class="modal-header">
+        <h3 class="modal-title">Novo Agendamento</h3>
+        <button class="modal-close" id="btnFecharAgendamento">&#10005;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Nome do disparo</label>
+          <input type="text" class="form-input" id="agNome" placeholder="Ex: Prospecção Curitiba - Semana 1" />
+        </div>
+        <div class="form-group" style="margin-top:14px">
+          <label class="form-label">Arquivo CSV com leads</label>
+          <div class="drop-zone-sm" id="agDropZone">
+            <input type="file" id="agCsvInput" accept=".csv" hidden />
+            <span class="drop-sm-icon"><i data-lucide="file-text"></i></span>
+            <span id="agCsvLabel">Arraste o CSV ou clique para selecionar</span>
+          </div>
+          <span class="form-hint">Colunas: <code>title</code>, <code>phone</code></span>
+        </div>
+        <div class="form-group" style="margin-top:14px">
+          <label class="form-label">Data e Hora do Disparo</label>
+          <input type="datetime-local" class="form-input" id="agDataHora" />
+          <span class="form-hint">O disparo começará automaticamente neste horário</span>
+        </div>
+        <div class="form-grid" style="margin-top:14px">
+          <div class="form-group">
+            <label class="form-label">Delay mínimo (seg)</label>
+            <input type="number" class="form-input" id="agDelayMin" value="45" min="10" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Delay máximo (seg)</label>
+            <input type="number" class="form-input" id="agDelayMax" value="90" min="20" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Limite de envios</label>
+            <input type="number" class="form-input" id="agLimite" value="0" min="0" />
+            <span class="form-hint">0 = sem limite</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Leads no CSV</label>
+            <div class="estimate-box" id="agLeadsCount">—</div>
+          </div>
+        </div>
+        <div class="info-box" style="margin-top:14px" id="agInfoEstimativa"></div>
+        <button class="btn btn-primary btn-lg" id="btnSalvarAgendamento" style="width:100%;margin-top:18px">Agendar Disparo</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================
+       SEÇÃO: APIFY SCRAPER
+  ============================== -->
+  <section class="section" id="section-apify">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title"><i data-lucide="cloud-lightning" style="display:inline-block;vertical-align:middle;margin-right:8px;color:var(--primary)"></i> Prospecção de Leads Apify</h1>
+        <p class="page-sub">Configure os filtros de busca (Estado, Cidade, Nicho, Qualificação de Site/Nota) e extraia leads qualificados via Apify</p>
+      </div>
+      <div style="display:flex;gap:10px">
+        <button class="btn btn-secondary" id="btnApifyConfigToggle"><i data-lucide="settings"></i> Token Apify</button>
+        <button class="btn btn-secondary" id="btnApifyLimparLeads"><i data-lucide="trash-2"></i> Limpar Leads</button>
+      </div>
+    </div>
+
+    <!-- Card de Configuração Token Apify -->
+    <div class="card hidden" id="cardApifyConfig" style="margin-bottom:20px;">
+      <div class="card-title" style="display:flex;align-items:center;gap:8px">
+        <i data-lucide="key"></i> Configuração da API Apify.com
+      </div>
+      <div class="form-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:14px">
+        <div class="form-group">
+          <label class="form-label">Apify API Token</label>
+          <input type="password" class="form-input" id="inputApifyToken" placeholder="apify_api_..." />
+          <span class="form-hint">Obtenha seu token em apify.com > Account > Integrations</span>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Ator Padrão</label>
+          <select class="form-input" id="selectApifyActor">
+            <option value="compass~crawler-google-places">Google Maps Scraper (compass/crawler-google-places)</option>
+          </select>
+          <span class="form-hint">Você pode carregar seus atores da conta</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:15px">
+        <button class="btn btn-primary btn-sm" id="btnSalvarApifyToken">Salvar Configurações</button>
+        <button class="btn btn-secondary btn-sm" id="btnTestarApifyToken">Listar Meus Atores Apify</button>
+      </div>
+      <div id="apifyTokenMsg" style="margin-top:10px;font-size:13px"></div>
+    </div>
+
+    <!-- Card de Filtros Pré-Prospecção -->
+    <div class="card card-overflow-visible" style="margin-bottom:20px;overflow:visible;">
+      <div class="card-title" style="display:flex;align-items:center;gap:8px">
+        <i data-lucide="sliders"></i> Filtros de Prospecção & Localização
+      </div>
+
+      <!-- Bloco 1: Localização -->
+      <div style="margin-top:14px">
+        <label class="form-label" style="font-weight:700;color:var(--primary);margin-bottom:8px;display:block">
+          1. Localização (País, Estado/Província, Cidade e Região)
+        </label>
+        <div style="display:grid;grid-template-columns:1.2fr 1.2fr 1.8fr 1.3fr;gap:12px">
+          <div class="form-group">
+            <label class="form-label">País do Mundo</label>
+            <select class="form-input" id="apifyPais">
+              <option value="BR" data-lang="pt-BR" data-cc="br" selected>🇧🇷 Brasil</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Estado / Região</label>
+            <select class="form-input" id="apifyEstado">
+              <option value="">Selecione o Estado...</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Cidade</label>
+            <select class="form-input" id="apifyCidade" disabled>
+              <option value="">Selecione um Estado primeiro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Bairro / Região (Opcional)</label>
+            <input type="text" class="form-input" id="apifyBairro" placeholder="Ex: Centro, Jardins..." />
+          </div>
+        </div>
+      </div>
+
+      <!-- Bloco 2: Segmento & Profissão -->
+      <div style="margin-top:16px">
+        <label class="form-label" style="font-weight:700;color:var(--primary);margin-bottom:8px;display:block">
+          2. Segmento / Área de Atuação
+        </label>
+        <div style="display:grid;grid-template-columns:2fr 1fr;gap:12px">
+          <div class="form-group">
+            <label class="form-label">Categoria / Nicho de Profissão</label>
+            <select class="form-input" id="apifyNichoProfissao">
+              <option value="">Selecione uma categoria por tópico</option>
+              <optgroup label="Saúde & Bem-Estar">
+                <option value="Clínica Médica">Clínicas Médicas</option>
+                <option value="Dentista">Dentistas / Odontologia</option>
+                <option value="Psicólogo">Psicólogos</option>
+                <option value="Fisioterapia">Fisioterapeutas / Clínicas de Fisioterapia</option>
+                <option value="Nutricionista">Nutricionistas</option>
+                <option value="Farmácia">Farmácias / Farmácias de Manipulação</option>
+                <option value="Academia">Academias / Personal Trainer</option>
+                <option value="Pilates">Estúdios de Pilates</option>
+              </optgroup>
+              <optgroup label="Beleza & Cuidados Pessoais">
+                <option value="Salão de Beleza">Salões de Beleza</option>
+                <option value="Barbearia">Barbearias</option>
+                <option value="Clínica de Estética">Clínicas de Estética</option>
+                <option value="Esmalteria">Esmalterias / Manicure</option>
+                <option value="Spa">Spas & Massagem</option>
+                <option value="Design de Sobrancelhas">Design de Sobrancelhas / Cílios</option>
+              </optgroup>
+              <optgroup label="Veículos & Automotivo">
+                <option value="Oficina Mecânica">Oficinas Mecânicas</option>
+                <option value="Funilaria e Pintura">Funilaria e Pintura</option>
+                <option value="Lava Rápido">Lava Rápido / Estética Automotiva</option>
+                <option value="Autopeças">Lojas de Autopeças</option>
+                <option value="Concessionária">Concessionárias / Revenda de Carros</option>
+                <option value="Insulfilm e Som">Insulfilm / Som e Acessórios</option>
+              </optgroup>
+              <optgroup label="Alimentação & Gastronomia">
+                <option value="Restaurante">Restaurantes</option>
+                <option value="Pizzaria">Pizzarias</option>
+                <option value="Hamburgueria">Hamburguerias</option>
+                <option value="Lanchonete">Lanchonetes</option>
+                <option value="Padaria">Padarias</option>
+                <option value="Cafeteria">Cafeterias</option>
+                <option value="Bar">Bares & Pubs</option>
+              </optgroup>
+              <optgroup label="Energia & Tecnologia">
+                <option value="Energia Solar">Empresas de Energia Solar</option>
+                <option value="Ar Condicionado">Climatização & Ar Condicionado</option>
+                <option value="Automação Residencial">Automação Residencial / Casa Inteligente</option>
+                <option value="Segurança Eletrônica">Segurança Eletrônica / Câmeras e Alarmes</option>
+                <option value="Informática e Suporte TI">Assistência de TI / Informática</option>
+              </optgroup>
+              <optgroup label="Serviços Profissionais & B2B">
+                <option value="Advogado">Escritórios de Advocacia</option>
+                <option value="Contabilidade">Escritórios de Contabilidade</option>
+                <option value="Imobiliária">Imobiliárias / Corretores</option>
+                <option value="Arquiteto">Escritórios de Arquitetura</option>
+                <option value="Engenharia">Empresas de Engenharia</option>
+                <option value="Consultoria">Consultorias Empresariais</option>
+              </optgroup>
+              <optgroup label="Serviços Gerais & Reformas">
+                <option value="Desentupidora">Desentupidoras / Dedetizadoras</option>
+                <option value="Eletricista">Eletricistas</option>
+                <option value="Chaveiro">Chaveiros</option>
+                <option value="Pintor">Pintores & Empreiteiras</option>
+                <option value="Marmoraria">Marmorarias & Vidraçarias</option>
+              </optgroup>
+              <optgroup label="Pet & Veterinária">
+                <option value="Clínica Veterinária">Clínicas Veterinárias</option>
+                <option value="Pet Shop">Pet Shops</option>
+                <option value="Banho e Tosa">Banho e Tosa</option>
+              </optgroup>
+              <optgroup label="Comércio & Varejo">
+                <option value="Loja de Roupas">Lojas de Roupas / Vestuário</option>
+                <option value="Materiais de Construção">Materiais de Construção</option>
+                <option value="Loja de Móveis">Lojas de Móveis / Decoração</option>
+                <option value="Ótica">Óticas</option>
+              </optgroup>
+              <optgroup label="Personalizado">
+                <option value="CUSTOM">Digitar busca personalizada...</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Busca Específica / Refinamento</label>
+            <input type="text" class="form-input" id="apifySearchCustom" placeholder="Ex: Ortodontia, Solar, etc." />
+          </div>
+        </div>
+      </div>
+
+      <!-- Bloco 3: Filtros de Qualificação do Lead -->
+      <div style="margin-top:16px">
+        <label class="form-label" style="font-weight:700;color:var(--primary);margin-bottom:8px;display:block">
+          3. Filtros de Qualificação do Lead
+        </label>
+        <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:12px">
+          <div class="form-group">
+            <label class="form-label">Status do Website</label>
+            <select class="form-input" id="apifyFiltroSite">
+              <option value="todos">Todos os Leads</option>
+              <option value="sem_site" selected>Apenas SEM SITE (Maior Oportunidade)</option>
+              <option value="com_site">Apenas COM Site</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Nota Mínima Google</label>
+            <select class="form-input" id="apifyFiltroNota">
+              <option value="0">Qualquer nota</option>
+              <option value="3.5">3.5 ou mais</option>
+              <option value="4.0">4.0 ou mais</option>
+              <option value="4.5">4.5 ou mais</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Mín. de Avaliações</label>
+            <select class="form-input" id="apifyFiltroAvaliacoes">
+              <option value="0">Qualquer qtd.</option>
+              <option value="5">5+ avaliações</option>
+              <option value="10">10+ avaliações</option>
+              <option value="50">50+ avaliações</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Qtd. Máxima</label>
+            <select class="form-input" id="apifyMaxItems">
+              <option value="20">20 leads</option>
+              <option value="50" selected>50 leads</option>
+              <option value="100">100 leads</option>
+              <option value="200">200 leads</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:20px;display:flex;gap:12px;align-items:center">
+        <button class="btn btn-primary btn-lg" id="btnIniciarApifyScrape">
+          <i data-lucide="search"></i> Buscar Leads Qualificados no Apify
+        </button>
+        <span id="apifyScrapeStatusText" style="font-size:13px;color:var(--text-muted)"></span>
+      </div>
+    </div>
+
+
+    <!-- Jolly Progress Bar -->
+    <div class="card hidden" id="cardApifyProgress" style="margin-bottom:20px;padding:20px;">
+      <div class="jolly-progress-container" style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <label id="apifyProgressTitle" style="font-family:var(--font-title);font-size:14px;font-weight:700;color:var(--text)">Buscando oportunidades no Apify...</label>
+          <span id="apifyProgressPct" style="font-family:var(--font-title);font-size:14px;font-weight:700;color:var(--primary)">0%</span>
+        </div>
+        <div style="width:100%;height:14px;background:var(--bg-elevated);border-radius:9999px;overflow:hidden;position:relative;">
+          <div id="apifyProgressFill" style="width:0%;height:100%;background:linear-gradient(90deg, #10B981, #34D399);border-radius:9999px;transition:width 0.4s ease;"></div>
+        </div>
+        <p class="form-hint" id="apifyProgressSub" style="font-size:12px;color:var(--text3);margin-top:2px;">Iniciando robô na nuvem Apify...</p>
+      </div>
+    </div>
+
+    <!-- Leads Capturados — Cards Modernos -->
+    <div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;flex-wrap:wrap;gap:10px">
+        <div style="display:flex;align-items:center;gap:12px">
+          <h3 class="card-title" style="margin:0"><i data-lucide="users"></i> Oportunidades Encontradas (<span id="apifyCountLeads">0</span>)</h3>
+          <button class="btn btn-primary btn-sm" id="btnAbrirModalSalvarPasta" style="border-radius:10px;padding:6px 14px;">
+            <i data-lucide="folder-plus"></i> Salvar Lista em Pasta
+          </button>
+          <button class="btn btn-primary btn-sm" id="btnContinuarCheckpointApify" style="border-radius:10px;padding:6px 14px;background:#FACC15;color:#0B0F17;font-weight:700;border:none;" title="Rolar até o lead onde você parou">
+            <i data-lucide="bookmark-check"></i> Continuar Checkpoint
+          </button>
+          <button class="btn btn-secondary btn-sm" id="btnApifyLimparLeads" style="border-radius:10px;padding:6px 14px;" title="Limpar lista do Apify Scraper para fazer nova busca sem perder pastas salvas">
+            <i data-lucide="trash-2"></i> Limpar Lista do Scraper
+          </button>
+        </div>
+        <div style="display:flex;gap:8px">
+          <input type="text" class="form-input" id="apifyFiltroTexto" placeholder="Buscar por nome, ramo ou local..." style="width:260px;padding:8px 14px;font-size:13px;border-radius:10px;" />
+        </div>
+      </div>
+      <div id="apifyLeadsGrid" class="apify-leads-grid">
+        <div class="apify-empty-state" id="apifyEmptyState">
+          <div style="font-size:40px;margin-bottom:12px">🔍</div>
+          <p style="font-size:15px;font-weight:600;margin:0">Nenhum lead capturado via Apify ainda</p>
+          <p style="font-size:13px;color:var(--text-muted);margin-top:6px">Configure os filtros acima e clique em "Buscar Leads Qualificados" para iniciar</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================
+       SEÇÃO: MEUS LEADS (PASTAS SALVAS)
+  ============================== -->
+  <section class="section" id="section-meus-leads">
+    <!-- Visão 1: Grid de Pastas -->
+    <div id="viewGridPastas">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title"><i data-lucide="folder-check" style="display:inline-block;vertical-align:middle;margin-right:8px;color:var(--primary)"></i> Meus Leads & Pastas Salvas</h1>
+          <p class="page-sub">Gerencie suas listas salvas por nicho e localização e acompanhe o checkpoint de envios</p>
+        </div>
+        <div style="display:flex;gap:10px">
+          <input type="text" class="form-input" id="filtroPastasTexto" placeholder="Buscar pasta ou nicho..." style="width:240px;padding:8px 14px;font-size:13px;border-radius:10px;" />
+        </div>
+      </div>
+
+      <div id="containerGridPastas" class="pastas-grid">
+        <!-- Cards dinâmicos de pastas via JS -->
+      </div>
+    </div>
+
+    <!-- Visão 2: Conteúdo Interno da Pasta Selecionada -->
+    <div id="viewPastaDetalhes" class="hidden">
+      <div class="page-header" style="align-items:flex-start;margin-bottom:15px;">
+        <div>
+          <button class="btn btn-secondary btn-sm" id="btnVoltarPastas" style="margin-bottom:10px;">
+            <i data-lucide="arrow-left"></i> Voltar para Minhas Pastas
+          </button>
+          <h1 class="page-title" id="pastaDetNome">Nome da Pasta</h1>
+          <p class="page-sub" id="pastaDetNichoInfo">Nicho · Localização</p>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <input type="text" class="form-input" id="filtroPastaLeadsTexto" placeholder="Buscar nesta pasta..." style="width:220px;padding:8px 14px;font-size:13px;border-radius:10px;" />
+          <button class="btn btn-danger btn-sm" id="btnExcluirPastaAtual" title="Excluir Pasta">
+            <i data-lucide="trash-2"></i> Excluir Pasta
+          </button>
+        </div>
+      </div>
+
+      <!-- Banner de Checkpoint da Pasta -->
+      <div class="card card-overflow-visible" id="cardPastaCheckpoint" style="margin-bottom:20px;padding:18px;background:#131B2A;border:1px solid rgba(16,185,129,0.3);border-radius:16px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;">
+          <div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+              <span class="apify-badge oportunidade" style="font-size:12px;padding:3px 10px;">📍 CHECKPOINT DE PARADA</span>
+              <span id="pastaCheckpointData" style="font-size:12px;color:var(--text3)"></span>
+            </div>
+            <h4 id="pastaCheckpointTitle" style="margin:0 0 4px;font-size:16px;font-weight:700;color:var(--text)">Você ainda não iniciou o envio nesta pasta</h4>
+            <p id="pastaCheckpointSub" style="margin:0;font-size:13px;color:var(--text3)">Clique no botão ao lado para rolar até o primeiro lead pendente.</p>
+          </div>
+          <div>
+            <button class="btn btn-primary btn-lg" id="btnContinuarCheckpointPasta" style="border-radius:12px;">
+              <i data-lucide="play"></i> Continuar Envio do Checkpoint
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid de Leads da Pasta -->
+      <div id="gridPastaLeadsItems" class="apify-leads-grid">
+        <!-- Cards dinâmicos dos leads da pasta via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL: Salvar Lista em Pasta -->
+  <div class="modal-overlay hidden" id="modalSalvarPasta">
+    <div class="modal" style="max-width:520px">
+      <div class="modal-header">
+        <h3 class="modal-title" style="display:flex;align-items:center;gap:8px">
+          <i data-lucide="folder-plus" style="color:var(--primary)"></i> Salvar Lista de Leads em Pasta
+        </h3>
+        <button class="modal-close" id="btnFecharSalvarPasta">&#10005;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:13px;color:var(--text3);margin-bottom:16px">
+          Salve esta lista para continuar enviando propostas depois ou iniciar novas prospecções sem perder esses contatos.
+        </p>
+
+        <div class="form-group" style="margin-bottom:14px;">
+          <label class="form-label">Nome da Pasta / Lista</label>
+          <input type="text" class="form-input" id="inputNomePasta" placeholder="Ex: Barbearias em Arapongas/PR" />
+        </div>
+
+        <div class="form-group" style="margin-bottom:14px;">
+          <label class="form-label">Informações da Prospecção (Nicho / Filtros)</label>
+          <input type="text" class="form-input" id="inputInfoPasta" placeholder="Ex: Barbearias · Arapongas, PR · Apenas SEM SITE" />
+        </div>
+
+        <div style="background:var(--bg-elevated);padding:12px;border-radius:10px;margin-bottom:18px;font-size:13px;">
+          <span>Total de empresas a serem salvas nesta pasta: </span>
+          <strong id="countModalLeadsSalvar" style="color:var(--primary);font-size:15px">0 leads</strong>
+        </div>
+
+        <div style="display:flex;gap:10px;justify-content:flex-end">
+          <button class="btn btn-secondary" id="btnCancelarSalvarPasta">Cancelar</button>
+          <button class="btn btn-primary" id="btnConfirmarSalvarPasta">
+            <i data-lucide="check"></i> Salvar Pasta e Ir para Meus Leads
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Detalhes do Estabelecimento -->
+  <div class="modal-overlay hidden" id="modalApifyDetalhes">
+    <div class="modal" style="max-width:600px">
+      <div class="modal-header">
+        <h3 class="modal-title" id="apifyDetTitle">Detalhes do Estabelecimento</h3>
+        <button class="modal-close" id="btnFecharApifyDetalhes">&#10005;</button>
+      </div>
+      <div class="modal-body" id="apifyDetBody">
+        <!-- Conteúdo dinâmico via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Kit de IA Gemini (Abordagem, Proposta, Prompt Site) -->
+  <div class="modal-overlay hidden" id="modalApifyIA">
+    <div class="modal" style="max-width:700px">
+      <div class="modal-header">
+        <h3 class="modal-title" style="display:flex;align-items:center;gap:8px">
+          <i data-lucide="sparkles" style="color:var(--primary)"></i> Kit de Prospecção IA (Gemini)
+        </h3>
+        <button class="modal-close" id="btnFecharApifyIA">&#10005;</button>
+      </div>
+      <div class="modal-body">
+        <div style="margin-bottom:15px;padding:12px;background:var(--bg-elevated);border-radius:8px">
+          <strong id="apifyIaLeadNome">Empresa</strong>
+          <div style="font-size:12px;color:var(--text-muted)" id="apifyIaLeadMeta">Categoria | Endereço</div>
+          <div id="apifyIaDiagnostico" style="margin-top:6px;font-size:13px;color:var(--primary);font-weight:500"></div>
+        </div>
+
+        <!-- Abas do Modal de IA -->
+        <div class="tab-nav-ia" style="display:flex;gap:8px;border-bottom:1px solid var(--border-color);margin-bottom:15px">
+          <button class="tab-btn-ia active" data-tab="tabAbordagem">💬 Abordagem WhatsApp</button>
+          <button class="tab-btn-ia" data-tab="tabProposta">📄 Proposta Comercial</button>
+          <button class="tab-btn-ia" data-tab="tabPromptSite">💻 Prompt para o Site</button>
+        </div>
+
+        <!-- Conteúdo das Abas -->
+        <div id="tabAbordagem" class="tab-content-ia active">
+          <!-- Modelo de Script Select -->
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding:8px 12px;background:var(--bg-card);border-radius:8px;border:1px solid var(--border-color)">
+            <span style="font-size:12px;font-weight:600;color:var(--text-muted)">Modelo de Abordagem:</span>
+            <select id="selectModeloScript" class="form-input" style="width:auto;padding:4px 10px;font-size:12px">
+              <option value="padrao">Principal (Página Oficial + Identidade Visual)</option>
+              <option value="alternativo">Alternativo (Perfil Google + Amostra de Site)</option>
+            </select>
+          </div>
+
+          <!-- Sequência de Mensagens Passo a Passo -->
+          <div class="sequencia-mensagens-container" style="display:flex;flex-direction:column;gap:12px">
+            <!-- Mensagem 1 -->
+            <div class="seq-card" style="background:var(--bg-elevated);border:1px solid var(--border-color);border-radius:10px;padding:12px">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+                <span style="font-size:11px;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:0.5px">
+                  1ª Mensagem (Contato Inicial)
+                </span>
+                <span id="badgeHorarioSaudacao" style="font-size:11px;background:rgba(16,185,129,0.15);color:#10b981;padding:2px 8px;border-radius:12px;font-weight:600">
+                  ☀️ Saudação Automática
+                </span>
+              </div>
+              <textarea class="form-input" id="textSeqMsg1" rows="2" style="font-family:inherit;line-height:1.4;margin-bottom:8px;font-size:13px"></textarea>
+              <div style="display:flex;gap:8px;justify-content:flex-end">
+                <button class="btn btn-secondary btn-sm" id="btnCopiarSeq1"><i data-lucide="copy" style="width:13px;height:13px"></i> Copiar</button>
+                <button class="btn btn-primary btn-sm" id="btnEnviarSeq1"><i data-lucide="send" style="width:13px;height:13px"></i> Enviar Msg 1</button>
+              </div>
+            </div>
+
+            <!-- Mensagem 2 -->
+            <div class="seq-card" style="background:var(--bg-elevated);border:1px solid var(--border-color);border-radius:10px;padding:12px">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+                <span style="font-size:11px;font-weight:700;color:#60a5fa;text-transform:uppercase;letter-spacing:0.5px">
+                  2ª Mensagem (Observação Google Maps)
+                </span>
+              </div>
+              <textarea class="form-input" id="textSeqMsg2" rows="2" style="font-family:inherit;line-height:1.4;margin-bottom:8px;font-size:13px"></textarea>
+              <div style="display:flex;gap:8px;justify-content:flex-end">
+                <button class="btn btn-secondary btn-sm" id="btnCopiarSeq2"><i data-lucide="copy" style="width:13px;height:13px"></i> Copiar</button>
+                <button class="btn btn-primary btn-sm" id="btnEnviarSeq2"><i data-lucide="send" style="width:13px;height:13px"></i> Enviar Msg 2</button>
+              </div>
+            </div>
+
+            <!-- Mensagem 3 -->
+            <div class="seq-card" style="background:var(--bg-elevated);border:1px solid var(--border-color);border-radius:10px;padding:12px">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+                <span style="font-size:11px;font-weight:700;color:#f59e0b;text-transform:uppercase;letter-spacing:0.5px">
+                  3ª Mensagem (Proposta de Amostra sem Custo)
+                </span>
+              </div>
+              <textarea class="form-input" id="textSeqMsg3" rows="3" style="font-family:inherit;line-height:1.4;margin-bottom:8px;font-size:13px"></textarea>
+              <div style="display:flex;gap:8px;justify-content:flex-end">
+                <button class="btn btn-secondary btn-sm" id="btnCopiarSeq3"><i data-lucide="copy" style="width:13px;height:13px"></i> Copiar</button>
+                <button class="btn btn-primary btn-sm" id="btnEnviarSeq3"><i data-lucide="send" style="width:13px;height:13px"></i> Enviar Msg 3</button>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:10px;margin-top:14px;padding-top:10px;border-top:1px solid var(--border-color);align-items:center;justify-content:space-between">
+            <span style="font-size:12px;color:var(--text-muted)">Envio completo (todas as mensagens):</span>
+            <div style="display:flex;gap:8px">
+              <button class="btn btn-secondary btn-sm" id="btnCopiarAbordagem"><i data-lucide="copy"></i> Copiar Todas</button>
+              <button class="btn btn-primary btn-sm" id="btnEnviarWhatsAppIa"><i data-lucide="send"></i> Enviar Bloco Completo</button>
+            </div>
+          </div>
+          <!-- Campo oculto para manter compatibilidade com scripts legados -->
+          <textarea id="textAbordagemIa" style="display:none"></textarea>
+        </div>
+
+        <div id="tabProposta" class="tab-content-ia hidden">
+          <div class="form-group">
+            <label class="form-label">Mini Proposta Comercial de Serviços / Site</label>
+            <textarea class="form-input" id="textPropostaIa" rows="8" style="font-family:inherit;line-height:1.5"></textarea>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:12px">
+            <button class="btn btn-secondary" id="btnCopiarProposta"><i data-lucide="copy"></i> Copiar Proposta</button>
+          </div>
+        </div>
+
+        <div id="tabPromptSite" class="tab-content-ia hidden">
+          <div class="form-group">
+            <label class="form-label">Prompt Pronto para Gerar o Site (ChatGPT / Bolt.new / v0)</label>
+            <textarea class="form-input" id="textPromptSiteIa" rows="8" style="font-family:monospace;font-size:12px;line-height:1.4;background:var(--bg-card)"></textarea>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:12px">
+            <button class="btn btn-secondary" id="btnCopiarPromptSite"><i data-lucide="copy"></i> Copiar Prompt do Site</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+
+<!-- MODAL: Teste Manual da IA -->
+<div class="modal-overlay hidden" id="modalTesteManual">
+  <div class="modal" style="max-width:460px">
+    <div class="modal-header">
+      <h3 class="modal-title">Teste Manual da IA</h3>
+      <button class="modal-close" id="btnFecharTesteManual">&#10005;</button>
+    </div>
+    <div class="modal-body">
+      <p style="font-size:13px;color:var(--text3);margin-bottom:14px">
+        Simula uma mensagem recebida pelo WhatsApp — útil para confirmar que a IA está respondendo sem precisar do celular.
+      </p>
+      <div class="form-group">
+        <label class="form-label">Número (com DDI, ex: 5511999999999)</label>
+        <input type="text" class="form-input" id="testeNumero" placeholder="5511999999999" />
+      </div>
+      <div class="form-group" style="margin-top:12px">
+        <label class="form-label">Mensagem</label>
+        <textarea class="form-input" id="testeTexto" rows="3" placeholder="Ex: Olá, vi vocês no Google Maps, ainda atendem?"></textarea>
+      </div>
+      <button class="btn btn-primary" id="btnEnviarTeste" style="width:100%;margin-top:14px">
+        Simular mensagem recebida
+      </button>
+      <div style="margin-top:10px;display:flex;gap:8px">
+        <button class="btn btn-secondary btn-sm" id="btnResetarConversa" style="width:100%">
+          &#8635; Resetar conversa deste número
+        </button>
+      </div>
+      <div class="info-box" style="margin-top:12px" id="testeResultado"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Calendário Personalizado -->
+<div class="modal-overlay hidden" id="modalCalendarioPreto">
+  <div class="modal" style="max-width:420px;background:#0F172A;border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:24px;box-shadow:0 25px 50px -12px rgba(0,0,0,0.7)">
+    <div class="modal-header" style="border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:14px;margin-bottom:18px;display:flex;justify-content:space-between;align-items:center">
+      <h3 class="modal-title" style="display:flex;align-items:center;gap:10px;font-size:16px;font-weight:700;color:#FFFFFF">
+        <i data-lucide="calendar" style="color:#10B981;width:18px;height:18px"></i> Selecionar Período
+      </h3>
+      <button class="modal-close" id="btnFecharModalCalendario" style="background:transparent;border:none;color:#9CA3AF;font-size:18px;cursor:pointer">&#10005;</button>
+    </div>
+    <div class="modal-body" style="display:flex;flex-direction:column;gap:16px">
+      <div class="form-group">
+        <label class="form-label" style="color:#9CA3AF;font-size:12px;font-weight:600;margin-bottom:6px;display:block">Data Inicial</label>
+        <input type="date" class="form-input dark-date-input" id="dashDataInicio" style="background:#1E293B;border:1px solid rgba(255,255,255,0.15);color:#FFFFFF;border-radius:10px;padding:10px 14px;width:100%;font-size:14px;outline:none" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" style="color:#9CA3AF;font-size:12px;font-weight:600;margin-bottom:6px;display:block">Data Final</label>
+        <input type="date" class="form-input dark-date-input" id="dashDataFim" style="background:#1E293B;border:1px solid rgba(255,255,255,0.15);color:#FFFFFF;border-radius:10px;padding:10px 14px;width:100%;font-size:14px;outline:none" />
+      </div>
+      <div style="display:flex;gap:10px;margin-top:10px;justify-content:flex-end">
+        <button class="btn btn-secondary" id="btnCancelarCalendario" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#9CA3AF;border-radius:10px;padding:8px 16px;cursor:pointer;font-weight:600">Cancelar</button>
+        <button class="btn btn-primary" id="btnAplicarCalendario" style="background:#10B981;border:none;color:#FFFFFF;border-radius:10px;padding:8px 20px;cursor:pointer;font-weight:600;display:flex;align-items:center;gap:6px">
+          <i data-lucide="check" style="width:16px;height:16px"></i> Aplicar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast-container" id="toastContainer"></div>
+
+<script>document.addEventListener('DOMContentLoaded', () => lucide.createIcons());</script>
+<script src="app.js"></script>
+</body>
+</html>

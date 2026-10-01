@@ -1,0 +1,7 @@
+node_modules/
+.env
+data/leads*.csv
+data/enviados.json
+data/conversas.json
+logs/
+*.log

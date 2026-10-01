@@ -1,0 +1,926 @@
+[
+  {
+    "title": "Studio MoodMe - Nail & Beauty",
+    "phone": "554130930735",
+    "address": "Studio MoodMe - Nail & Beauty - R. Bento Viana, 278 - Água Verde, Curitiba - PR, 80240-110",
+    "category": "Nail salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Studio Blanca Cristaldo Nail Spa",
+    "phone": "5541995263871",
+    "address": "Studio Blanca Cristaldo Nail Spa - R. Dinarte de Jesus, 371 - Pilarzinho, Curitiba - PR, 82110-480",
+    "category": "Nail salon",
+    "status": "erro"
+  },
+  {
+    "title": "La Femme - Studio e Alongamento de Unhas",
+    "phone": "5541997481062",
+    "address": "torre A - Av. Rep. Argentina, 1336 - sala 1306 - Vila Izabel, Curitiba - PR, 80240-210",
+    "category": "Nail salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Espaço Lady Nails",
+    "phone": "554135279188",
+    "address": "Espaço Lady Nails - R. Dr. Manoel Pedro, 861 - Cabral, Curitiba - PR, 80035-030",
+    "category": "Nail salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Studio Rosa Dìeb Nails - Especialista em Unhas",
+    "phone": "5541992264623",
+    "address": "Studio Rosa Dìeb Nails - Especialista em Unhas - Av. João Gualberto, 1731 - Juvevê, Curitiba - PR, 80030-001",
+    "category": "Beauty salon",
+    "status": "enviado"
+  },
+  {
+    "title": "The Gel Nails",
+    "phone": "5541997747022",
+    "address": "The Gel Nails - R. Alexandre Von Humboldt, 642 - Pilarzinho, Curitiba - PR, 82110-000",
+    "category": "Nail salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Studio Vanessa Fátima (fibra De Vidro/unhas Em Gel)",
+    "phone": "5541999222124",
+    "address": "Studio Vanessa Fátima (fibra De Vidro/unhas Em Gel) - R. Ângelo Gai, 556 - Umbará, Curitiba - PR, 81940-340",
+    "category": "Nail salon",
+    "status": "enviado"
+  },
+  {
+    "title": "STUDIOB Nails - Bigorrilho",
+    "phone": "5541987363311",
+    "address": "STUDIOB Nails - Bigorrilho - R. Padre Anchieta, 2050 - Sl 1105 - Bigorrilho, Curitiba - PR, 80730-000",
+    "category": "Beauty salon",
+    "status": "erro"
+  },
+  {
+    "title": "Studio Thays Leal Nail Designer. Alongamentos/fibra e gel/ Esmaltação em gel..",
+    "phone": "5541995845433",
+    "address": "Studio Thays Leal Nail Designer. Alongamentos/fibra e gel/ Esmaltação em gel.. - R. Fernandes de Barros, 587 - Cristo Rei, Curitiba - PR, 80045-390",
+    "category": "Nail salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Umma Nail Studio",
+    "phone": "5541992420454",
+    "address": "Umma Nail Studio - Av. Brasília, 5559 - Sobreloja 06 - Novo Mundo, Curitiba - PR, 81020-010",
+    "category": "Nail salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Studio Alice Bastos - unhas e sobrancelhas",
+    "phone": "5541997413064",
+    "address": "Edifício Workspace Emiliano - Rua Emiliano Perneta, 466 - Conj 1209 - Centro, Curitiba - PR, 80010-050",
+    "category": "Nail salon",
+    "status": "enviado"
+  },
+  {
+    "title": "D-Unhas Unidade Curitiba",
+    "phone": "5541997574345",
+    "address": "D-Unhas Unidade Curitiba - R. Visc. do Rio Branco, 1341 - Lj 1 - Centro, Curitiba - PR, 80420-210",
+    "category": "Beauty salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Elis Micolichi Nail Designer",
+    "phone": "5541997094940",
+    "address": "Elis Micolichi Nail Designer - R. Brig. Franco, 2300 - Rebouças, Curitiba - PR, 80250-903",
+    "category": "Nail salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Espaço Day nails unhas de fibra de vidro e gel /Esmaltação em gel.Cursos de unhas de fibra de vidro/CURITIBA PR.",
+    "phone": "5541984704754",
+    "address": "Espaço Day nails unhas de fibra de vidro e gel /Esmaltação em gel.Cursos de unhas de fibra de vidro/CURITIBA PR. - Pretextato Taborda Júnior 124 /sobrado A Seminário-Batel-campo comprido Santa Quitéria, Av. Água Verde - Vila Izabel, Curitiba - PR, 80320-210",
+    "category": "Nail salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Salão de Beleza CASA MZX",
+    "phone": "5511992032906",
+    "address": "Salão de Beleza CASA MZX - R. Nova Jerusalém, 78 - 3 Andar - Tatuapé, São Paulo - SP, 03410-000",
+    "category": "Beauty salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Studio Fabiane Borges - Alongamento de Unhas Naturais e Esmaltação em Gel",
+    "phone": "554132231164",
+    "address": "Studio Fabiane Borges - Alongamento de Unhas Naturais e Esmaltação em Gel - R. Buenos Aires, 466 - Sl 21 - Batel, Curitiba - PR, 80250-070",
+    "category": "Nail salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Jhuly Unhas de Fibra",
+    "phone": "5541996145390",
+    "address": "Jhuly Unhas de Fibra - R. José Loureiro, 12 - 4 andar sala 402 - Centro, Curitiba - PR, 80010-000",
+    "category": "Nail salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Martha Vasquez Nails – Unhas & Cuticulagem Russa Centro",
+    "phone": "5541995101771",
+    "address": "Edificio labor - R. Voluntários da Pátria, 262 - Centro, Curitiba - PR, 80020-000",
+    "category": "Nail salon",
+    "status": "enviado"
+  },
+  {
+    "title": "BOBEK y los colores",
+    "phone": "5541987745903",
+    "address": "BOBEK y los colores - R. Dr. Faivre, 115 - Sl 06 - Centro, Curitiba - PR, 80060-140",
+    "category": "Nail salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Lua Nova Unhas",
+    "phone": "5541985120020",
+    "address": "Lua Nova Unhas - R. XV de Novembro, 270 - Centro, Curitiba - PR, 80020-310",
+    "category": "Nail salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Luana Ferreira Nail Designer",
+    "phone": "5541997762019",
+    "address": "Luana Ferreira Nail Designer - R. Mal. Deodoro, 235 - And 16º Sala 1605 - Centro, Curitiba - PR, 80010-010",
+    "category": "Nail salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Studio CWB Nails & Lashes Designer",
+    "phone": "5541991821265",
+    "address": "TORRE B - Av. Cândido de Abreu, 526 - SALA 1010 - Centro Cívico, Curitiba - PR, 80530-000",
+    "category": "Beauty salon",
+    "status": "enviado"
+  },
+  {
+    "title": "DG Denisse González Nails Academy",
+    "phone": "5541998730391",
+    "address": "edif galeria heisler - R. Riachuelo, 102 - 18° andar sala 184 - Centro, Curitiba - PR, 80020-250",
+    "category": "Nail salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Godê Company",
+    "phone": "552301010301",
+    "address": "Galeria Lustoza - R. XV de Novembro, 556 - Sl 1003 - Centro, Curitiba - PR, 80020-320",
+    "category": "Nail salon",
+    "status": "erro"
+  },
+  {
+    "title": "Fabiane Tsunemi Nails Design",
+    "phone": "5541988997626",
+    "address": "Fabiane Tsunemi Nails Design - Rua XV de Novembro,297, centro, Sl 1102 - Brasil•, Curitiba - PR, 80020-310",
+    "category": "Beauty salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Chic Esmalteria | Centro Cívico",
+    "phone": "5541984990213",
+    "address": "Chic Esmalteria | Centro Cívico - Av. Cândido de Abreu, 469 - 10º Andar - Sala 1004 - Centro Cívico, Curitiba - PR, 80530-000",
+    "category": "Nail salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Beleza Perfeita Nails",
+    "phone": "5541997356991",
+    "address": "Ao lado da magazine Luiza, enfrente ao Banco safra, Centro - Edifício Arnaldo Tha - R. Mal. Deodoro, 235 - Sl 106 - Centro, Curitiba - PR, 80020-320",
+    "category": "Cosmetics store",
+    "status": "enviado"
+  },
+  {
+    "title": "Reflexos da Beleza",
+    "phone": "5541998361009",
+    "address": "Reflexos da Beleza - Av. Mal. Floriano Peixoto, 306 - 7ª Andar, Sala 77 - Centro, Curitiba - PR, 80010-130",
+    "category": "Beauty salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Dallas Studio de Unhas e Manicure Russa Curitiba",
+    "phone": "5541985419072",
+    "address": "Dallas Studio de Unhas e Manicure Russa Curitiba - Rua Emiliano Perneta, 680 - Batel, Curitiba - PR, 80010-080",
+    "category": "Beauty salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Studio Sucell Bealty",
+    "phone": "5542999107187",
+    "address": "Studio Sucell Bealty - R. João Negrão, 731 - Centro, Curitiba - PR, 80010-200",
+    "category": "Nail salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Karina Chandelier Beauty Studio",
+    "phone": "5541995649049",
+    "address": "Karina Chandelier Beauty Studio - Alameda Dr. Carlos de Carvalho, 655 - Sl Sala 401 - Centro, Curitiba - PR, 80410-180",
+    "category": "Beauty salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Evelyn Justi Nail Designer",
+    "phone": "5541998751834",
+    "address": "Evelyn Justi Nail Designer - Alameda Prudente de Moraes, 1232 - Centro, Curitiba - PR, 80430-220",
+    "category": "Nail salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Studio Meus Cílios Curitiba Centro",
+    "phone": "5541987464903",
+    "address": "Studio Meus Cílios Curitiba Centro - Av. Vicente Machado, 520 - Centro, Curitiba - PR, 80420-010",
+    "category": "Health and beauty shop",
+    "status": "enviado"
+  },
+  {
+    "title": "Salão de beleza I Tok de Charme",
+    "phone": "5541997977262",
+    "address": "Salão de beleza I Tok de Charme - R. Pedro Ivo, 201 - Centro - Centro, Curitiba - PR, 80010-020",
+    "category": "Beauty salon",
+    "status": "enviado"
+  },
+  {
+    "title": "ANA BARRETTO | NAIL DESIGN",
+    "phone": "5541992315625",
+    "address": "ANA BARRETTO | NAIL DESIGN - R. Dr. Faivre, 750 - Centro - Centro, Curitiba - PR, 83320-382",
+    "category": "Beauty salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Enigma Nails by Jessica Nail Designer - Alongamento de Unha",
+    "phone": "5541987595016",
+    "address": "Enigma Nails by Jessica Nail Designer - Alongamento de Unha - Al. Dr. Muricy, 209 - Centro, Curitiba - PR, 80010-120",
+    "category": "Nail salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Espaço Daiane Modesto",
+    "phone": "5541995919796",
+    "address": "Espaço Daiane Modesto - Av. Sete de Setembro, 4214 - Batel, Curitiba - PR, 80250-085",
+    "category": "Nail salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Studio Srta Rios CWB - Beauty Bar Café",
+    "phone": "554137799774",
+    "address": "Edifício Executive Center Everest - R. Comendador Araújo, 143 - 2-A - Centro, Curitiba - PR, 80420-900",
+    "category": "Beauty salon",
+    "status": "erro"
+  },
+  {
+    "title": "bnyou - beleza e bem estar no conforto do seu lar.",
+    "phone": "5541997018778",
+    "address": "bnyou - beleza e bem estar no conforto do seu lar. - Alameda Dr. Carlos de Carvalho, 417 - Batel, Curitiba - PR, 80410-180",
+    "category": "Health and beauty shop",
+    "status": "erro"
+  },
+  {
+    "title": "BOHO ART & BEAUTY",
+    "phone": "554130446101",
+    "address": "BOHO ART & BEAUTY - R. Nunes Machado, 68 - Lj 02 - Batel, Curitiba - PR, 80250-000",
+    "category": "Beauty salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Espaço da Manicura Russa by Gracieli klosowski",
+    "phone": "5541995588869",
+    "address": "Espaço da Manicura Russa by Gracieli klosowski - Av. Cândido de Abreu, 469 - Sala 1004 - Centro Cívico, Curitiba - PR, 80030-030",
+    "category": "Nail salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Salão de beleza | Mirian's Golden Hands",
+    "phone": "5541998376451",
+    "address": "Salão de beleza | Mirian's Golden Hands - R. Mal. Deodoro, 630 - Loja 44 - Centro, Curitiba - PR, 80010-010",
+    "category": "Beauty salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Studio Monique Pittner – Nails Concept - Curitiba",
+    "phone": "5541984844532",
+    "address": "Studio Monique Pittner – Nails Concept - Curitiba - R. Des. Motta, 1499 - Sl 402 - Batel, Curitiba - PR, 80420-164",
+    "category": "Nail salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Chroma Studio",
+    "phone": "5541995967309",
+    "address": "Chroma Studio - R. José Loureiro, 12 - Centro, Curitiba - PR, 80010-914",
+    "category": "Nail salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Welli Valente Salon",
+    "phone": "5541995657346",
+    "address": "Welli Valente Salon - Rua 24 de Maio, 411 - Sl 204 - Centro, Curitiba - PR, 80220-060",
+    "category": "Beauty salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Studio Amanda Borges",
+    "phone": "5541998782396",
+    "address": "Studio Amanda Borges - R. Voluntários da Pátria, 233 - Centro, Curitiba - PR, 80020-000",
+    "category": "Nail salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Salão de Beleza Tok de Charme",
+    "phone": "5541991129666",
+    "address": "Salão de Beleza Tok de Charme - Av. Mal. Floriano Peixoto, 501 - Centro, Curitiba - PR, 80010-130",
+    "category": "Beauty salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Essence Beauty & Mind",
+    "phone": "5541984858140",
+    "address": "Essence Beauty & Mind - R. Monsenhor Celso, 349 - Centro, Curitiba - PR, 80010-150",
+    "category": "Beauty salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Ella's Centro de Beleza",
+    "phone": "5541991354188",
+    "address": "Ella's Centro de Beleza - R. XV de Novembro, 294 - Centro, Curitiba - PR, 80020-310",
+    "category": "Beauty salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Jessica Quadros - Podóloga, Maquiadora e Depiladora",
+    "phone": "5541998933737",
+    "address": "Jessica Quadros - Podóloga, Maquiadora e Depiladora - Av. Mal. Floriano Peixoto, 713 - Centro, Curitiba - PR, 80010-130",
+    "category": "Podiatrist",
+    "status": "enviado"
+  },
+  {
+    "title": "Lyon",
+    "phone": "554132247712",
+    "address": "Lyon - Alameda Dr. Carlos de Carvalho, 04 - Centro, Curitiba - PR, 80410-180",
+    "category": "Beauty salon",
+    "status": "enviado"
+  },
+  {
+    "title": "Donzelas & Barbudos",
+    "phone": "5541996600763",
+    "address": "Donzelas & Barbudos - Alameda Dr. Carlos de Carvalho, 603 - loja 16 Loja 16 - Centro, Curitiba - PR, 80430-180",
+    "category": "Beauty salon",
+    "status": "erro"
+  },
+  {
+    "title": "Studio Michele torques",
+    "phone": "5541997227168",
+    "address": "Studio Michele torques - R. Dr. Pedrosa, 140 - Centro, Curitiba - PR, 80420-120",
+    "category": "Nail salon",
+    "status": "erro"
+  },
+  {
+    "title": "Instituto Embelleze Curitiba",
+    "phone": "554130397828",
+    "address": "Instituto Embelleze Curitiba - R. Barão do Rio Branco, 412 - Centro, Curitiba - PR, 80010-180",
+    "category": "Beauty school",
+    "status": "erro"
+  },
+  {
+    "title": "Studio Raphaela Baschta Nails",
+    "phone": "5541992537566",
+    "address": "Studio Raphaela Baschta Nails - R. São Francisco, 232 - Sl 415 - Centro, Curitiba - PR, 80020-190",
+    "category": "Nail salon",
+    "status": "erro"
+  },
+  {
+    "title": "INSTITUTO CIUS",
+    "phone": "5541984465225",
+    "address": "INSTITUTO CIUS - Av. Sete de Setembro, 4214 - Sala 705 - Batel, Curitiba - PR, 80250-085",
+    "category": "Nail salon",
+    "status": "erro"
+  },
+  {
+    "title": "Extensão de Cílios por Anna Julia - Curitiba",
+    "phone": "5541996721834",
+    "address": "Extensão de Cílios por Anna Julia - Curitiba - R. Monsenhor Celso, 211 - Centro, Curitiba - PR, 80010-150",
+    "category": "Eyelash salon",
+    "status": "erro"
+  },
+  {
+    "title": "Traço de Gata co.",
+    "phone": "5541985230596",
+    "address": "Traço de Gata co. - R. José Loureiro, 12 - sala 401 - Centro, Curitiba - PR, 80010-000",
+    "category": "Nail salon",
+    "status": "erro"
+  },
+  {
+    "title": "Depil House Teatro Guaíra | Depilação e Salão de Beleza",
+    "phone": "554132239731",
+    "address": "Em frente ao Teatro Guaíra - R. XV de Novembro, 870 - Centro, Curitiba - PR, 80020-310",
+    "category": "Beauty salon",
+    "status": "erro"
+  },
+  {
+    "title": "Nail Designer Raquel Abilski",
+    "phone": "5541984914194",
+    "address": "Edifício Novo Centro - R. André de Barros, 226 - Centro, Curitiba - PR, 80010-080",
+    "category": "Nail salon",
+    "status": "erro"
+  },
+  {
+    "title": "Belleza Latina Y&G",
+    "phone": "5541998012557",
+    "address": "Belleza Latina Y&G - Praça Generoso Marques, 208 - Centro, Curitiba - PR, 80020-230",
+    "category": "Nail salon",
+    "status": "erro"
+  },
+  {
+    "title": "Paula Socha Studio e Escola de Nails Designer",
+    "phone": "5541999610707",
+    "address": "Paula Socha Studio e Escola de Nails Designer - R. XV de Novembro, 1155 - Sl 1502 - Centro, Curitiba - PR, 80060-000",
+    "category": "Beauty salon",
+    "status": "erro"
+  },
+  {
+    "title": "Caroline Lapola Nails – Cursos e Atendimentos de Unhas em Curitiba",
+    "phone": "5541988584275",
+    "address": "Caroline Lapola Nails – Cursos e Atendimentos de Unhas em Curitiba - Rua 24 de Maio, 563 - Centro, Curitiba - PR, 80220-060",
+    "category": "Beauty salon",
+    "status": "erro"
+  },
+  {
+    "title": "Claudia Solducha - Nail Designer",
+    "phone": "5541997698518",
+    "address": "Claudia Solducha - Nail Designer - R. Alferes Poli, 381 - Sobreloja - Centro, Curitiba - PR, 80230-090",
+    "category": "Beauty salon",
+    "status": "erro"
+  },
+  {
+    "title": "Unhas da lui tradicionais/ Centro-Curitiba",
+    "phone": "5541984253786",
+    "address": "Unhas da lui tradicionais/ Centro-Curitiba - R. XV de Novembro, 266 - 8° Andar sala 83 - Centro, Curitiba - PR, 80020-310",
+    "category": "Nail salon",
+    "status": "erro"
+  },
+  {
+    "title": "Espaço das Divas",
+    "phone": "5541995408945",
+    "address": "Galeria Ritz - R. Mal. Deodoro, 51 - Loja 3 - Térreo - Centro, Curitiba - PR, 80020-320",
+    "category": "Beauty supply store",
+    "status": "erro"
+  },
+  {
+    "title": "Sentiê Beauty Esmalteria | Manicure Curitiba",
+    "phone": "5541992520767",
+    "address": "Sentiê Beauty Esmalteria | Manicure Curitiba - Alameda Prudente de Moraes, 404 - Centro, Curitiba - PR, 80430-234",
+    "category": "Nail salon",
+    "status": "erro"
+  },
+  {
+    "title": "Espaço Larissa Rodrigues",
+    "phone": "5541998037643",
+    "address": "Espaço Larissa Rodrigues - Rua 24 de Maio, 563 - Centro, Curitiba - PR, 80230-080",
+    "category": "Nail salon",
+    "status": "erro"
+  },
+  {
+    "title": "Mada Fermino Nail designer",
+    "phone": "5544998537602",
+    "address": "Mada Fermino Nail designer - Rua Emiliano Perneta, 466 - Centro, Curitiba - PR, 80420-080",
+    "category": "Nail salon",
+    "status": "erro"
+  },
+  {
+    "title": "Ale Marks Moda Plus Size",
+    "phone": "5541999318689",
+    "address": "Ale Marks Moda Plus Size - Av. Sete de Setembro, 2362 - Loja 20 - Centro, Curitiba - PR, 80060-070",
+    "category": "Beautician",
+    "status": "erro"
+  },
+  {
+    "title": "Studio Laryssa Rodrigues",
+    "phone": "5541998463446",
+    "address": "Studio Laryssa Rodrigues - R. Nunes Machado, 472 - Sala 1805 - 18° andar - Rebouças, Curitiba - PR, 80250-000",
+    "category": "Beautician",
+    "status": "erro"
+  },
+  {
+    "title": "Unhas By Leticia",
+    "phone": "5541984121247",
+    "address": "Unhas By Leticia - R. Monsenhor Celso, 265 - Centro, Curitiba - PR, 80010-150",
+    "category": "Nail salon",
+    "status": "erro"
+  },
+  {
+    "title": "Viva Cabelos & Estética",
+    "phone": "5541999560301",
+    "address": "Viva Cabelos & Estética - R. Nunes Machado, 433 - Centro, Curitiba - PR, 80250-000",
+    "category": "Beauty salon",
+    "status": "erro"
+  },
+  {
+    "title": "Enjoy Cabeleireiros",
+    "phone": "5541988216180",
+    "address": "Enjoy Cabeleireiros - Tv. Jesuíno Marcondes, 55 - Lj 01 - Centro, Curitiba - PR, 80010-060",
+    "category": "Beauty salon",
+    "status": "erro"
+  },
+  {
+    "title": "SL Studio Lisboa - Salão de Beleza e bem Estar",
+    "phone": "5541985036800",
+    "address": "Galeria Suissa - R. José Loureiro, 347-349, R. Mal. Deodoro, 262-280 - Loja 3 - Centro, Curitiba - PR, 80010-000",
+    "category": "Beauty salon",
+    "status": "erro"
+  },
+  {
+    "title": "Studio Noemi Alves",
+    "phone": "5541991175115",
+    "address": "Studio Noemi Alves - R. Barão do Rio Branco, 63 - Centro, Curitiba - PR, 80010-180",
+    "category": "Nail salon",
+    "status": "erro"
+  },
+  {
+    "title": "️CLUBE NAILS BRASIL OFICIAL",
+    "phone": "5541995530056",
+    "address": "Edifício tijucas - Centro, Curitiba - PR, 80020-020",
+    "category": "Nail salon",
+    "status": "erro"
+  },
+  {
+    "title": "Lady&Lord - Shop. Mueller",
+    "phone": "554121118900",
+    "address": "Lady&Lord - Shop. Mueller - Av. Cândido de Abreu - Centro Cívico, Curitiba - PR, 80530-060",
+    "category": "Beauty salon",
+    "status": "erro"
+  },
+  {
+    "title": "Salão Viena",
+    "phone": "5541996001870",
+    "address": "Salão Viena - Av. Mal. Floriano Peixoto, 366 - Centro, Curitiba - PR, 80010-130",
+    "category": "Beauty salon",
+    "status": "erro"
+  },
+  {
+    "title": "Laura Carvalho | Nail Designer Curitiba",
+    "phone": "5541995159254",
+    "address": "Laura Carvalho | Nail Designer Curitiba - R. Lamenha Lins, 1623 - Rebouças, Curitiba - PR, 80230-060",
+    "category": "Nail salon",
+    "status": "erro"
+  },
+  {
+    "title": "Alongamento de cílios, extensão de cílios, no centro de Curitiba | Larissa Renata lash",
+    "phone": "5541991186336",
+    "address": "Alongamento de cílios, extensão de cílios, no centro de Curitiba | Larissa Renata lash - Av. Mal. Floriano Peixoto, 45 - Centro, Curitiba - PR, 80020-090",
+    "category": "Beauty salon",
+    "status": "erro"
+  },
+  {
+    "title": "Salão Sempre Bela",
+    "phone": "5541997467051",
+    "address": "Salão Sempre Bela - R. Des. Westphalen, 15 - Sl 704 - Centro, Curitiba - PR, 80010-110",
+    "category": "Beauty salon",
+    "status": "erro"
+  },
+  {
+    "title": "UNHAS DA LUH - Manicure e Pedicure",
+    "phone": "5541997066834",
+    "address": "UNHAS DA LUH - Manicure e Pedicure - R. Treze de Maio, 439 - loja 15 - Centro, Curitiba - PR, 80020-270",
+    "category": "Nail salon",
+    "status": "erro"
+  },
+  {
+    "title": "Studio Michele Ottmann Onicotécnica/Nail/Instrutora",
+    "phone": "5541988946818",
+    "address": "Centro comercial Spazio Mall - R. Nicarágua, 1319 - Sl 02 - Bacacheri, Curitiba - PR, 82515-260",
+    "category": "Nail salon",
+    "status": "erro"
+  },
+  {
+    "title": "Nail Designer Curitiba - Laura Stapait",
+    "phone": "5541987213651",
+    "address": "Nail Designer Curitiba - Laura Stapait - Av. Winston Churchill, 1824 - Capão Raso, Curitiba - PR, 81130-000",
+    "category": "Nail salon",
+    "status": "pendente"
+  },
+  {
+    "title": "Nailist",
+    "phone": "5541995131447",
+    "address": "Shoping Riviera - Av. Rep. Argentina, 1869 - Sl 20 - Água Verde, Curitiba - PR, 80620-005",
+    "category": "Nail salon",
+    "status": "pendente"
+  },
+  {
+    "title": "salão unhas Nail G.O.D.Z",
+    "phone": "5541988209714",
+    "address": "salão unhas Nail G.O.D.Z - R. São José dos Pinhais, 1406 - Sítio Cercado, Curitiba - PR, 81920-250",
+    "category": "Beauty salon",
+    "status": "pendente"
+  },
+  {
+    "title": "Marina Quer - Nails Design",
+    "phone": "5541995687599",
+    "address": "Marina Quer - Nails Design - R. Manoel Claro Alves, 38 - Cajuru, Curitiba - PR, 82950-100",
+    "category": "Nail salon",
+    "status": "pendente"
+  },
+  {
+    "title": "Fast Escova Curitiba - Juvevê",
+    "phone": "5541992555422",
+    "address": "Fast Escova Curitiba - Juvevê - Av. João Gualberto, n° 1342 - Sl 102 - Matriz, Curitiba - PR, 80030-001",
+    "category": "Beauty salon",
+    "status": "pendente"
+  },
+  {
+    "title": "Fast Escova Água Verde - Salão de Beleza",
+    "phone": "5541999105021",
+    "address": "Fast Escova Água Verde - Salão de Beleza - Avenida Silva Jardim, n° 2600, CONVENIO ESTACIONAMENTO: De Segunda a Sexta: Rua Dr. Alexandre Gutierrez 826, Av. Silva Jardim, 2520 - Água Verde, Curitiba - PR, 80240-020",
+    "category": "Beauty salon",
+    "status": "pendente"
+  },
+  {
+    "title": "Erica Bueno nails",
+    "phone": "5541988502226",
+    "address": "Erica Bueno nails - Brasil - Rua João Tobias de Paiva Netto, 1749- Cajuru, Curitiba - PR, 82990-070 - Brasil - Cajuru, Curitiba - PR, 82980-130",
+    "category": "Nail salon",
+    "status": "pendente"
+  },
+  {
+    "title": "Muslera Experience",
+    "phone": "5541988378342",
+    "address": "Muslera Experience - R. Fernando de Noronha, 1607 - Boa Vista, Curitiba - PR, 82650-145",
+    "category": "Barber shop",
+    "status": "pendente"
+  },
+  {
+    "title": "MARIE Studio",
+    "phone": "5511943074628",
+    "address": "MARIE Studio - Av. Clavásio Alves da Silva, 657 - Sl 04 - Limão, São Paulo - SP, 02722-030",
+    "category": "Beauty salon",
+    "status": "pendente"
+  },
+  {
+    "title": "National Commercial Training Service-SENAC",
+    "phone": "554335725500",
+    "address": "National Commercial Training Service-SENAC - R. Raposo Tavares, 894 - Centro, Londrina - PR, 86010-580",
+    "category": "Technical school",
+    "status": "pendente"
+  },
+  {
+    "title": "Studio Beauty Joyce Nielsen",
+    "phone": "5541995566894",
+    "address": "Studio Beauty Joyce Nielsen - R. Rio Grande do Sul, 507 - Água Verde, Curitiba - PR, 80620-230",
+    "category": "Nail salon",
+    "status": "pendente"
+  },
+  {
+    "title": "Luciane Araujo nail design",
+    "phone": "5541995707807",
+    "address": "Luciane Araujo nail design - R. Padre Anchieta, 2348 - 15°andar sala 1506 - Bigorrilho, Curitiba - PR, 80420-170",
+    "category": "Nail salon",
+    "status": "pendente"
+  },
+  {
+    "title": "Studio Jessica Santana Nails",
+    "phone": "5541992897852",
+    "address": "Studio Jessica Santana Nails - R. Padre Anchieta, 2540 - Mercês, Curitiba - PR, 80410-030",
+    "category": "Nail salon",
+    "status": "pendente"
+  },
+  {
+    "title": "Espaço Lapelle",
+    "phone": "554132667000",
+    "address": "Espaço Lapelle - R. Des. Joaquim de Oliveira Sobrinho, 35 - Jardim das Américas, Curitiba - PR, 81530-370",
+    "category": "Beauty salon",
+    "status": "pendente"
+  },
+  {
+    "title": "Karol Cachoss Nails Designer",
+    "phone": "5541998709447",
+    "address": "Karol Cachoss Nails Designer - Portao Branco, R. Cruzeiro do Sul, 1016 - A - Emiliano Perneta, Pinhais - PR, 83324-060",
+    "category": "Nail salon",
+    "status": "pendente"
+  },
+  {
+    "title": "Beauté",
+    "phone": "554130169381",
+    "address": "Beauté - Av. Cel. Francisco H. dos Santos, 1080 - Jardim das Américas, Curitiba - PR, 81530-000",
+    "category": "Beauty salon",
+    "status": "pendente"
+  },
+  {
+    "title": "Nuance Cabeleireiros & Nail Design - Beleza no Umbará Curitiba PR",
+    "phone": "5541999981426",
+    "address": "Nuance Cabeleireiros & Nail Design - Beleza no Umbará Curitiba PR - R. Nicola Pellanda, 2460 - Sobreloja - Umbará, Curitiba - PR, 81940-295",
+    "category": "Beauty salon",
+    "status": "pendente"
+  },
+  {
+    "title": "L Matheus Spa & Beauty and Hairdressing",
+    "phone": "554132843170",
+    "address": "L Matheus Spa & Beauty and Hairdressing - Av. Sen. Salgado Filho, 4303 - Uberaba, Curitiba - PR, 81570-001",
+    "category": "Beauty salon",
+    "status": "pendente"
+  },
+  {
+    "title": "Studio Rauana Sanches - Unhas em gel",
+    "phone": "5541997882437",
+    "address": "Studio Rauana Sanches - Unhas em gel - R. Profa. Lourdes Gruter Bonin, 1158 - Parque da Fonte, São José dos Pinhais - PR, 83050-140",
+    "category": "Beauty salon",
+    "status": "pendente"
+  },
+  {
+    "title": "Reffatti Centro Estético e Beleza | Cantinho da Sobrancelha",
+    "phone": "5541984767214",
+    "address": "Reffatti Centro Estético e Beleza | Cantinho da Sobrancelha - R. Cruzeiro do Sul, 691 - Sítio Cercado, Curitiba - PR, 81900-230",
+    "category": "Beauty salon",
+    "status": "pendente"
+  },
+  {
+    "title": "Dele Dela Cabeleireiros",
+    "phone": "554132756550",
+    "address": "Dele Dela Cabeleireiros - R. Henrique Schuta, 35 - Capão Raso, Curitiba - PR, 81130-010",
+    "category": "Health food store",
+    "status": "pendente"
+  },
+  {
+    "title": "Kakau Venancio Hair Company - Salão de Beleza",
+    "phone": "554135036428",
+    "address": "Kakau Venancio Hair Company - Salão de Beleza - R. Izaac Ferreira da Cruz, 2435 - Sítio Cercado, Curitiba - PR, 81900-000",
+    "category": "Beauty salon",
+    "status": "pendente"
+  },
+  {
+    "title": "Belíssima Cosméticos Curitiba",
+    "phone": "554130395890",
+    "address": "Belíssima Cosméticos Curitiba - R. Delegado Leopoldo Belczak, 1260 - LJ 01 - Capão da Imbuia, Curitiba - PR, 82800-220",
+    "category": "Cosmetics store",
+    "status": "pendente"
+  },
+  {
+    "title": "Maison Charm",
+    "phone": "554132864299",
+    "address": "Maison Charm - R. Januário Alves de Souza, 609 - Boqueirão, Curitiba - PR, 81750-370",
+    "category": "Beauty salon",
+    "status": "pendente"
+  },
+  {
+    "title": "Stylo Hair Institute",
+    "phone": "554133233001",
+    "address": "Stylo Hair Institute - R. Gutemberg, 205 - Batel, Curitiba - PR, 80420-030",
+    "category": "Beauty salon",
+    "status": "pendente"
+  },
+  {
+    "title": "King’s Studio Hair",
+    "phone": "5541998631094",
+    "address": "King’s Studio Hair - Av. Augusto Staben, 1710 - Jardim Paulista, Campina Grande do Sul - PR, 83430-000",
+    "category": "Hairdresser",
+    "status": "pendente"
+  },
+  {
+    "title": "Shayele Arce especialista em cachos curitiba",
+    "phone": "5541996111532",
+    "address": "Shayele Arce especialista em cachos curitiba - Rua Francisco José Bozza 434, casa 1 - Tatuquara, Curitiba - PR, 81480-335",
+    "category": "Hairdresser",
+    "status": "pendente"
+  },
+  {
+    "title": "Esmalteria Lima",
+    "phone": "5541984522744",
+    "address": "Esmalteria Lima - R. Francisco Simioni, 176 - Aracatuba, Campina Grande do Sul - PR, 83430-000",
+    "category": "Beauty salon",
+    "status": "pendente"
+  },
+  {
+    "title": "Salão de Beleza Su Viana",
+    "phone": "5541996194625",
+    "address": "Salão de Beleza Su Viana - R. Euclides Bernardinho de Lima, 122 - Jardim Eugenia Maria, Campina Grande do Sul - PR, 83430-000",
+    "category": "Beauty salon",
+    "status": "pendente"
+  },
+  {
+    "title": "Dom Cabelos",
+    "phone": "5541985036745",
+    "address": "Dom Cabelos - R. Conselheiro Laurindo, 711 - Centro, Curitiba - PR, 80060-100",
+    "category": "Beauty salon",
+    "status": "pendente"
+  },
+  {
+    "title": "SPA e beleza",
+    "phone": "5541995011940",
+    "address": "SPA e beleza - R. Bororós, 199 - Vila Izabel, Curitiba - PR, 80320-260",
+    "category": "Beauty salon",
+    "status": "pendente"
+  },
+  {
+    "title": "Studio Beatriz Souza - Salão De Beleza",
+    "phone": "5541998263575",
+    "address": "Studio Beatriz Souza - Salão De Beleza - R. Profa. Nilce Terezinha Zanetti, 1303 - Jardim Paulista, Campina Grande do Sul - PR, 83430-000",
+    "category": "Beauty salon",
+    "status": "pendente"
+  },
+  {
+    "title": "Adri Cosméticos",
+    "phone": "5541996983316",
+    "address": "Adri Cosméticos - R. Tijucas do Sul, 247 - Sítio Cercado, Curitiba - PR, 81900-080",
+    "category": "Cosmetics store",
+    "status": "pendente"
+  },
+  {
+    "title": "Salão Super Bonita",
+    "phone": "5541997533885",
+    "address": "Salão Super Bonita - R. Celestino Ferrarini, 248 - Jardim Água Doce, Campina Grande do Sul - PR, 83430-000",
+    "category": "Beauty salon",
+    "status": "pendente"
+  },
+  {
+    "title": "Centro de Estética- Gisele Farias",
+    "phone": "5541999159598",
+    "address": "Centro de Estética- Gisele Farias - R. Prof. Duílio Calderari, 1369 - Jardim Paulista, Campina Grande do Sul - PR, 83430-000",
+    "category": "Beauty salon",
+    "status": "pendente"
+  },
+  {
+    "title": "Studio Ele e Ela Barbearia Capela Velha",
+    "phone": "5541998165800",
+    "address": "Studio Ele e Ela Barbearia Capela Velha - R. Uirapuru, 1320 - Capela Velha, Araucária - PR, 83706-070",
+    "category": "Beauty salon",
+    "status": "pendente"
+  },
+  {
+    "title": "Thais Chagas Beauty",
+    "phone": "5541987807496",
+    "address": "Thaís Chagas beauty - R. Leonardo Francischelli, 324 - 2• andar - sala 6 - Jardim Paulista, Campina Grande do Sul - PR, 83430-000",
+    "category": "Eyebrow bar",
+    "status": "pendente"
+  },
+  {
+    "title": "byRodrigoBanqueri Studio de Beleza",
+    "phone": "5511987711996",
+    "address": "byRodrigoBanqueri Studio de Beleza - R. Palacete das Águias, N°370 - Vila Mascote, São Paulo - SP, 04635-021",
+    "category": "Beauty salon",
+    "status": "pendente"
+  },
+  {
+    "title": "VÍRUS BARBERSHOP",
+    "phone": "554133086980",
+    "address": "VÍRUS BARBERSHOP - R. Eduardo Carlos Pereira, 3605 - Portão, Curitiba - PR, 81020-235",
+    "category": "Barber shop",
+    "status": "pendente"
+  },
+  {
+    "title": "Mari Prado Beauty Salon",
+    "phone": "5511995164774",
+    "address": "Mari Prado Beauty Salon - Av. Mascote, 565 - Vila Mascote, São Paulo - SP, 04363-000",
+    "category": "Beauty salon",
+    "status": "pendente"
+  },
+  {
+    "title": "Escola Viva Avante - Curitiba",
+    "phone": "5541989006136",
+    "address": "Escola Viva Avante - Curitiba - R. Tijucas do Sul, 1777 - Sítio Cercado, Curitiba - PR, 81925-060",
+    "category": "Technical school",
+    "status": "pendente"
+  },
+  {
+    "title": "Podologia Capão Raso",
+    "phone": "5541998687013",
+    "address": "Podologia Capão Raso - R. José Gomes de Abreu, 975 - Capão Raso, Curitiba - PR, 81020-600",
+    "category": "Podiatrist",
+    "status": "pendente"
+  },
+  {
+    "title": "Barbearia The Club - Curitiba",
+    "phone": "5541998618127",
+    "address": "Barbearia The Club - Curitiba - R. Bpo. Dom José, 2550 - Batel, Curitiba - PR, 80440-080",
+    "category": "Barber shop",
+    "status": "pendente"
+  },
+  {
+    "title": "Batel Club Barbershop",
+    "phone": "5541999075379",
+    "address": "Batel Club Barbershop - Rua Deputado Antônio Baby, 139 - Batel, Curitiba - PR, 80240-370",
+    "category": "Barber shop",
+    "status": "pendente"
+  },
+  {
+    "title": "Barber Shop Curitiba",
+    "phone": "5541998202645",
+    "address": "Barber Shop Curitiba - R. Manoel Eufrásio, 403A - Lj 20 - Juvevê, Curitiba - PR, 80030-440",
+    "category": "Barber shop",
+    "status": "pendente"
+  },
+  {
+    "title": "Barbearia Distrito",
+    "phone": "5541995704366",
+    "address": "Barbearia Distrito - Rua Percy Feliciano de Castilho, 901 - Lj 1 - Bairro Alto, Curitiba - PR, 82820-380",
+    "category": "Barber shop",
+    "status": "pendente"
+  },
+  {
+    "title": "Vintage Barber Shop in Água Verde",
+    "phone": "5541984265674",
+    "address": "Vintage Barber Shop in Água Verde - R. Castro, 650 - Água Verde, Curitiba - PR, 80620-300",
+    "category": "Barber shop",
+    "status": "pendente"
+  },
+  {
+    "title": "Base Barbearia | Vila Izabel",
+    "phone": "5541997770384",
+    "address": "Base Barbearia | Vila Izabel - R. Prof. Ulisses Vieira, 45 - Vila Izabel, Curitiba - PR, 80320-112",
+    "category": "Barber shop",
+    "status": "pendente"
+  }
+]
